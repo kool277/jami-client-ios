@@ -11,7 +11,11 @@
 #   platform release pins, and an unsigned device build (.ipa; there is no
 #   signing identity here, so it has to be signed before it installs on a
 #   device) published to the GitHub release with ci/release/publish-release.sh
-#   of that platform release (see RELEASING.md in kool277/jami).
+#   of that platform release (see RELEASING.md in kool277/jami);
+# - run by hand (workflow_dispatch), a dry run of that release path before
+#   a platform release: the daemon that a kool277/jami branch or tag pins
+#   and the unsigned device build, kept as a workflow artifact for a week
+#   instead of being published.
 # The contrib source tarballs and builds are cached between runs.
 name: kool277
 
@@ -20,6 +24,11 @@ on:
     branches: [master]
     tags: ['v*']
   pull_request:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: kool277/jami branch or tag whose jami-daemon pin and CI scripts to build with
+        default: main
 
 concurrency:
   group: kool277-${{ github.ref }}
@@ -38,8 +47,11 @@ jobs:
     runs-on: macos-26
     timeout-minutes: 360
     env:
-      RELEASE: ${{ startsWith(github.ref, 'refs/tags/v') }}
-      KIND: ${{ startsWith(github.ref, 'refs/tags/v') && 'device' || 'simulator' }}
+      # TAG: a release tag, published. RELEASE: the release path, for a tag
+      # or a dry run.
+      TAG: ${{ startsWith(github.ref, 'refs/tags/v') }}
+      RELEASE: ${{ startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch' }}
+      KIND: ${{ (startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch') && 'device' || 'simulator' }}
       HOMEBREW_NO_AUTO_UPDATE: 1
       HOMEBREW_NO_INSTALL_CLEANUP: 1
     steps:
@@ -51,15 +63,24 @@ jobs:
 
       - name: Platform release
         if: env.RELEASE == 'true'
+        env:
+          PLATFORM_INPUT: ${{ inputs.platform }}
         run: |
-          # actions/checkout leaves out the tag object: fetch it for its message.
-          git fetch -q --force --no-tags origin "+refs/tags/$GITHUB_REF_NAME:refs/tags/$GITHUB_REF_NAME"
-          platform=$(git for-each-ref --format='%(contents)' "refs/tags/$GITHUB_REF_NAME" | sed -n 's/^Platform: //p')
-          if [ -z "$platform" ]; then
-            echo "::error::The message of tag $GITHUB_REF_NAME names no platform release (no Platform: line)"
-            exit 1
+          if [ "$TAG" = true ]; then
+            # actions/checkout leaves out the tag object: fetch it for its message.
+            git fetch -q --force --no-tags origin "+refs/tags/$GITHUB_REF_NAME:refs/tags/$GITHUB_REF_NAME"
+            platform=$(git for-each-ref --format='%(contents)' "refs/tags/$GITHUB_REF_NAME" | sed -n 's/^Platform: //p')
+            if [ -z "$platform" ]; then
+              echo "::error::The message of tag $GITHUB_REF_NAME names no platform release (no Platform: line)"
+              exit 1
+            fi
+            version=$GITHUB_REF_NAME
+          else
+            platform=$PLATFORM_INPUT
+            version=dry-run-$(git rev-parse --short HEAD)
           fi
           echo "PLATFORM=$platform" >>"$GITHUB_ENV"
+          echo "VERSION=$version" >>"$GITHUB_ENV"
           git clone -q --depth 1 --branch "$platform" https://github.com/kool277/jami.git "$RUNNER_TEMP/kool277"
 
       - name: Daemon sources
@@ -182,14 +203,22 @@ jobs:
           xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Release \
             -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/Ring.xcarchive" \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= archive
-          ipa=jami-ios-$GITHUB_REF_NAME-unsigned.ipa
+          ipa=jami-ios-$VERSION-unsigned.ipa
           mkdir -p dist "$RUNNER_TEMP/ipa/Payload"
           cp -R "$RUNNER_TEMP/Ring.xcarchive/Products/Applications/"*.app "$RUNNER_TEMP/ipa/Payload/"
           (cd "$RUNNER_TEMP/ipa" && zip -qry "$GITHUB_WORKSPACE/dist/$ipa" Payload)
           (cd dist && shasum -a 256 "$ipa" >"$ipa.sha256")
 
       - name: Publish the GitHub release
-        if: env.RELEASE == 'true'
+        if: env.TAG == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: '"$RUNNER_TEMP/kool277/ci/release/publish-release.sh" jami-client-ios "$GITHUB_REF_NAME" dist/*'
+
+      - name: Keep the dry run's build
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v7
+        with:
+          name: jami-ios-${{ env.VERSION }}-unsigned
+          path: dist/
+          retention-days: 7
