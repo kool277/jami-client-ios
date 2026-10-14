@@ -171,9 +171,10 @@ jobs:
 
       # Some tests give work on background-QoS queues a few seconds, which a
       # busy runner does not grant, and the first boot of a simulator loads
-      # it for minutes (load average in the hundreds on 3 CPUs): boot it
-      # first, as upstream's fastlane lane does, and wait for the load to
-      # drop, at most 10 minutes.
+      # it for minutes (load average in the hundreds on 3 CPUs, mostly the
+      # simulator's mediaanalysisd at two CPUs): boot it first, as
+      # upstream's fastlane lane does, and wait for the load to drop, at
+      # most 10 minutes.
       - name: Boot the simulator
         if: env.RELEASE != 'true'
         run: |
