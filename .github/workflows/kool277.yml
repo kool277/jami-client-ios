@@ -108,17 +108,26 @@ jobs:
           path: ${{ runner.temp }}/contrib-cache
           key: contrib-${{ env.KIND }}-${{ env.XCODE }}-${{ hashFiles('daemon/contrib/src/**') }}-${{ github.run_id }}
 
-      - name: Carthage cache
+      - name: Restore the Carthage cache
         id: carthage-cache
-        uses: actions/cache@v6
+        uses: actions/cache/restore@v6
         with:
           path: Ring/Carthage
           key: carthage-${{ env.XCODE }}-${{ hashFiles('Ring/Cartfile.resolved') }}
 
       - name: Carthage dependencies
+        id: carthage
         if: steps.carthage-cache.outputs.cache-hit != 'true'
         working-directory: Ring
         run: ./fetch-dependencies.sh
+
+      # Saved as soon as the build succeeds, whatever happens next.
+      - name: Save the Carthage cache
+        if: steps.carthage.outcome == 'success'
+        uses: actions/cache/save@v6
+        with:
+          path: Ring/Carthage
+          key: carthage-${{ env.XCODE }}-${{ hashFiles('Ring/Cartfile.resolved') }}
 
       - name: Simulator
         if: env.RELEASE != 'true'
@@ -139,37 +148,33 @@ jobs:
           xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Debug \
             -destination "id=$SIMULATOR" build-for-testing
 
-      # The tests resolve profiles on a background-QoS queue and give it two
-      # seconds: start them on a booted simulator once the build and the
-      # simulator's start-up work are over, as upstream's fastlane lane does.
+      # Some tests give work on background-QoS queues a few seconds, which a
+      # busy runner does not grant, and the first boot of a simulator loads
+      # it for minutes (load average in the hundreds on 3 CPUs): boot it
+      # first, as upstream's fastlane lane does, and wait for the load to
+      # drop, at most 10 minutes.
       - name: Boot the simulator
         if: env.RELEASE != 'true'
         run: |
           xcrun simctl boot "$SIMULATOR"
           xcrun simctl bootstatus "$SIMULATOR" -b
-          for _ in $(seq 30); do
+          for _ in $(seq 60); do
             load=$(sysctl -n vm.loadavg | awk '{print $2}')
             echo "load average: $load"
-            awk -v l="$load" 'BEGIN { exit !(l < 2) }' && break
+            awk -v l="$load" 'BEGIN { exit !(l < 3) }' && exit 0
             sleep 10
           done
+          echo "::warning::The runner is still busy; the busiest processes:"
+          ps -Ao pcpu,pid,comm -r | head -15 || true
 
+      # A failing test runs once more, as in upstream's fastlane lanes
+      # (number_of_retries): a test that fails twice fails the build.
       - name: Tests
         if: env.RELEASE != 'true'
         run: |
           xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Debug \
-            -destination "id=$SIMULATOR" -only-testing:RingTests test-without-building
-
-      # TEMPORARY, to tell load from a lasting cause: the suites that failed
-      # on the first runs, again on the warm simulator.
-      - name: Diagnostic rerun
-        if: failure() && env.RELEASE != 'true'
-        continue-on-error: true
-        run: |
-          sysctl -n vm.loadavg
-          xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Debug \
-            -destination "id=$SIMULATOR" -only-testing:RingTests/ProfilesServiceTests \
-            -only-testing:RingTests/ThreadSafeDictionaryTests test-without-building
+            -destination "id=$SIMULATOR" -only-testing:RingTests \
+            -retry-tests-on-failure -test-iterations 2 test-without-building
 
       - name: Unsigned device build
         if: env.RELEASE == 'true'
