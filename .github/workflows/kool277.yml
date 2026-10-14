@@ -1,0 +1,225 @@
+# kool277 pipeline for kool277/jami-client-ios, on GitHub Actions: the
+# Jenkins of kool277/jami (ci/jenkins) runs on Linux, and an iOS build needs
+# macOS and Xcode. It does what the Jenkins pipelines of the other
+# components do:
+# - pull requests and master: the daemon (the submodule) and the app for the
+#   iOS simulator, then the RingTests unit tests and the collaborative
+#   editor's tests;
+# - a v* release tag, made by the platform release (ci/release in
+#   kool277/jami), whose message names that platform release
+#   ("Platform: v1.1.0"): the daemon at the jami-daemon commit that the
+#   platform release pins, and an unsigned device build (.ipa; there is no
+#   signing identity here, so it has to be signed before it installs on a
+#   device) published to the GitHub release with ci/release/publish-release.sh
+#   of that platform release (see RELEASING.md in kool277/jami);
+# - run by hand (workflow_dispatch), a dry run of that release path before
+#   a platform release: the daemon that a kool277/jami branch or tag pins
+#   and the unsigned device build, kept as a workflow artifact for a week
+#   instead of being published.
+# The contrib source tarballs and builds are cached between runs.
+name: kool277
+
+on:
+  push:
+    branches: [master]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: kool277/jami branch or tag whose jami-daemon pin and CI scripts to build with
+        default: main
+
+concurrency:
+  group: kool277-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: write
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    # Xcode 26 (the default there): the app uses iOS 26 SDK interfaces.
+    runs-on: macos-26
+    timeout-minutes: 360
+    env:
+      # TAG: a release tag, published. RELEASE: the release path, for a tag
+      # or a dry run.
+      TAG: ${{ startsWith(github.ref, 'refs/tags/v') }}
+      RELEASE: ${{ startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch' }}
+      KIND: ${{ (startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch') && 'device' || 'simulator' }}
+      HOMEBREW_NO_AUTO_UPDATE: 1
+      HOMEBREW_NO_INSTALL_CLEANUP: 1
+    steps:
+      # Everything is fetched from public repositories: the token, which can
+      # write releases, only goes to the publishing step.
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Platform release
+        if: env.RELEASE == 'true'
+        env:
+          PLATFORM_INPUT: ${{ inputs.platform }}
+        run: |
+          if [ "$TAG" = true ]; then
+            # actions/checkout leaves out the tag object: fetch it for its message.
+            git fetch -q --force --no-tags origin "+refs/tags/$GITHUB_REF_NAME:refs/tags/$GITHUB_REF_NAME"
+            platform=$(git for-each-ref --format='%(contents)' "refs/tags/$GITHUB_REF_NAME" | sed -n 's/^Platform: //p')
+            if [ -z "$platform" ]; then
+              echo "::error::The message of tag $GITHUB_REF_NAME names no platform release (no Platform: line)"
+              exit 1
+            fi
+            version=$GITHUB_REF_NAME
+          else
+            platform=$PLATFORM_INPUT
+            version=dry-run-$(git rev-parse --short HEAD)
+          fi
+          echo "PLATFORM=$platform" >>"$GITHUB_ENV"
+          echo "VERSION=$version" >>"$GITHUB_ENV"
+          git clone -q --depth 1 --branch "$platform" https://github.com/kool277/jami.git "$RUNNER_TEMP/kool277"
+
+      - name: Daemon sources
+        run: |
+          git submodule update --init daemon
+          if [ "$RELEASE" = true ]; then
+            pin=$(git -C "$RUNNER_TEMP/kool277" ls-tree HEAD jami-daemon | awk '{print $3}')
+            git -C daemon fetch -q origin "$pin"
+            git -C daemon checkout -q "$pin"
+          fi
+          git -C daemon log --oneline -1
+
+      - name: Tools
+        run: |
+          brew install autoconf automake libtool pkg-config gettext coreutils nasm yasm meson ninja carthage
+          xcodebuild -version
+          echo "XCODE=$(xcodebuild -version | head -1 | tr -d ' ')" >>"$GITHUB_ENV"
+
+      - name: Restore the contrib cache
+        uses: actions/cache/restore@v6
+        with:
+          path: ${{ runner.temp }}/contrib-cache
+          key: contrib-${{ env.KIND }}-${{ env.XCODE }}-${{ hashFiles('daemon/contrib/src/**') }}-${{ github.run_id }}
+          restore-keys: |
+            contrib-${{ env.KIND }}-${{ env.XCODE }}-${{ hashFiles('daemon/contrib/src/**') }}-
+            contrib-${{ env.KIND }}-${{ env.XCODE }}-
+
+      - name: Daemon and contrib for iOS
+        env:
+          CACHE_DIR: ${{ runner.temp }}/contrib-cache
+        run: |
+          mkdir -p "$CACHE_DIR"
+          if [ "$RELEASE" = true ]; then
+            ./compile-ios.sh --platform=iPhoneOS --release
+          else
+            # The runner is arm64: build only the arm64 simulator.
+            ./compile-ios.sh --platform=iPhoneSimulator --arch=aarch64-apple-darwin
+          fi
+
+      # Saved even when a later step fails, so that a new attempt does not
+      # build the contrib again.
+      - name: Save the contrib cache
+        if: always()
+        uses: actions/cache/save@v6
+        with:
+          path: ${{ runner.temp }}/contrib-cache
+          key: contrib-${{ env.KIND }}-${{ env.XCODE }}-${{ hashFiles('daemon/contrib/src/**') }}-${{ github.run_id }}
+
+      - name: Restore the Carthage cache
+        id: carthage-cache
+        uses: actions/cache/restore@v6
+        with:
+          path: Ring/Carthage
+          key: carthage-${{ env.XCODE }}-${{ hashFiles('Ring/Cartfile.resolved') }}
+
+      - name: Carthage dependencies
+        id: carthage
+        if: steps.carthage-cache.outputs.cache-hit != 'true'
+        working-directory: Ring
+        run: ./fetch-dependencies.sh
+
+      # Saved as soon as the build succeeds, whatever happens next.
+      - name: Save the Carthage cache
+        if: steps.carthage.outcome == 'success'
+        uses: actions/cache/save@v6
+        with:
+          path: Ring/Carthage
+          key: carthage-${{ env.XCODE }}-${{ hashFiles('Ring/Cartfile.resolved') }}
+
+      - name: Simulator
+        if: env.RELEASE != 'true'
+        run: |
+          # An iPhone 17 on the newest iOS runtime.
+          udid=$(xcrun simctl list devices available -j | jq -r '
+            [.devices | to_entries[] | select(.key | test("\\.iOS-")) | .key as $rt
+             | .value[] | select(.name == "iPhone 17")
+             | {udid, v: ($rt | sub(".*\\.iOS-"; "") | split("-") | map(tonumber))}]
+            | sort_by(.v) | last | .udid')
+          [ -n "$udid" ] && [ "$udid" != null ] || { echo "::error::No iPhone 17 simulator"; exit 1; }
+          echo "SIMULATOR=$udid" >>"$GITHUB_ENV"
+
+      - name: Build for testing
+        if: env.RELEASE != 'true'
+        run: |
+          Ring/CollabEditor/build.sh --test
+          xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Debug \
+            -destination "id=$SIMULATOR" build-for-testing
+
+      # Some tests give work on background-QoS queues a few seconds, which a
+      # busy runner does not grant, and the first boot of a simulator loads
+      # it for minutes (load average in the hundreds on 3 CPUs, mostly the
+      # simulator's mediaanalysisd at two CPUs): boot it first, as
+      # upstream's fastlane lane does, and wait for the load to drop, at
+      # most 10 minutes.
+      - name: Boot the simulator
+        if: env.RELEASE != 'true'
+        run: |
+          xcrun simctl boot "$SIMULATOR"
+          xcrun simctl bootstatus "$SIMULATOR" -b
+          for _ in $(seq 60); do
+            load=$(sysctl -n vm.loadavg | awk '{print $2}')
+            echo "load average: $load"
+            awk -v l="$load" 'BEGIN { exit !(l < 3) }' && exit 0
+            sleep 10
+          done
+          echo "::warning::The runner is still busy; the busiest processes:"
+          ps -Ao pcpu,pid,comm -r | head -15 || true
+
+      # A failing test runs once more, as in upstream's fastlane lanes
+      # (number_of_retries): a test that fails twice fails the build.
+      - name: Tests
+        if: env.RELEASE != 'true'
+        run: |
+          xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Debug \
+            -destination "id=$SIMULATOR" -only-testing:RingTests \
+            -retry-tests-on-failure -test-iterations 2 test-without-building
+
+      - name: Unsigned device build
+        if: env.RELEASE == 'true'
+        run: |
+          xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/Ring.xcarchive" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY= archive
+          ipa=jami-ios-$VERSION-unsigned.ipa
+          mkdir -p dist "$RUNNER_TEMP/ipa/Payload"
+          cp -R "$RUNNER_TEMP/Ring.xcarchive/Products/Applications/"*.app "$RUNNER_TEMP/ipa/Payload/"
+          (cd "$RUNNER_TEMP/ipa" && zip -qry "$GITHUB_WORKSPACE/dist/$ipa" Payload)
+          (cd dist && shasum -a 256 "$ipa" >"$ipa.sha256")
+
+      - name: Publish the GitHub release
+        if: env.TAG == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: '"$RUNNER_TEMP/kool277/ci/release/publish-release.sh" jami-client-ios "$GITHUB_REF_NAME" dist/*'
+
+      - name: Keep the dry run's build
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v7
+        with:
+          name: jami-ios-${{ env.VERSION }}-unsigned
+          path: dist/
+          retention-days: 7
