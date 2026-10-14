@@ -120,13 +120,56 @@ jobs:
         working-directory: Ring
         run: ./fetch-dependencies.sh
 
-      - name: Tests
+      - name: Simulator
+        if: env.RELEASE != 'true'
+        run: |
+          # An iPhone 17 on the newest iOS runtime.
+          udid=$(xcrun simctl list devices available -j | jq -r '
+            [.devices | to_entries[] | select(.key | test("\\.iOS-")) | .key as $rt
+             | .value[] | select(.name == "iPhone 17")
+             | {udid, v: ($rt | sub(".*\\.iOS-"; "") | split("-") | map(tonumber))}]
+            | sort_by(.v) | last | .udid')
+          [ -n "$udid" ] && [ "$udid" != null ] || { echo "::error::No iPhone 17 simulator"; exit 1; }
+          echo "SIMULATOR=$udid" >>"$GITHUB_ENV"
+
+      - name: Build for testing
         if: env.RELEASE != 'true'
         run: |
           Ring/CollabEditor/build.sh --test
           xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Debug \
-            -destination 'platform=iOS Simulator,name=iPhone 17,OS=latest' \
-            -only-testing:RingTests test
+            -destination "id=$SIMULATOR" build-for-testing
+
+      # The tests resolve profiles on a background-QoS queue and give it two
+      # seconds: start them on a booted simulator once the build and the
+      # simulator's start-up work are over, as upstream's fastlane lane does.
+      - name: Boot the simulator
+        if: env.RELEASE != 'true'
+        run: |
+          xcrun simctl boot "$SIMULATOR"
+          xcrun simctl bootstatus "$SIMULATOR" -b
+          for _ in $(seq 30); do
+            load=$(sysctl -n vm.loadavg | awk '{print $2}')
+            echo "load average: $load"
+            awk -v l="$load" 'BEGIN { exit !(l < 2) }' && break
+            sleep 10
+          done
+
+      - name: Tests
+        if: env.RELEASE != 'true'
+        run: |
+          xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Debug \
+            -destination "id=$SIMULATOR" -only-testing:RingTests test-without-building
+
+      # TEMPORARY, to tell load from a lasting cause: the suites that failed
+      # on the first runs, again on the warm simulator.
+      - name: Diagnostic rerun
+        if: failure() && env.RELEASE != 'true'
+        continue-on-error: true
+        run: |
+          sysctl -n vm.loadavg
+          xcodebuild -project Ring/Ring.xcodeproj -scheme Ring -configuration Debug \
+            -destination "id=$SIMULATOR" -only-testing:RingTests/ProfilesServiceTests \
+            -only-testing:RingTests/ThreadSafeDictionaryTests test-without-building
 
       - name: Unsigned device build
         if: env.RELEASE == 'true'
