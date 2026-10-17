@@ -79,6 +79,8 @@ struct ConversationContainerView: View {
         Button(action: viewModel.showContactInfo) {
             titleViewContent
         }
+        // The presence dot on the avatar is read after the name.
+        .accessibilityValue(viewModel.presence.accessibilityText ?? "")
     }
 
     private var titleViewContent: some View {
@@ -86,6 +88,13 @@ struct ConversationContainerView: View {
             AvatarSwiftUIView(source: viewModel.navBarAvatarProvider)
                 .frame(width: ConversationNavBarLayout.avatarSize,
                        height: ConversationNavBarLayout.avatarSize)
+                .overlay(alignment: .bottomTrailing) {
+                    PresenceDot(presence: viewModel.presence,
+                                diameter: ConversationNavBarLayout.presenceDotSize,
+                                ringColor: Color(UIColor.systemBackground),
+                                ringWidth: ConversationNavBarLayout.presenceRingWidth)
+                        .accessibilityHidden(true)
+                }
 
             VStack(alignment: .leading, spacing: 0) {
                 if !viewModel.name.isEmpty {

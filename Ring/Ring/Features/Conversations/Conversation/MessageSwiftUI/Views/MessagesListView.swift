@@ -76,8 +76,11 @@ struct MessagesListView: View {
     @SwiftUI.State private var envAppeared = false
     @SwiftUI.State private var isApplicationActive = UIApplication.shared.applicationState == .active
 
+    @AppStorage(chatBackgroundKey) private var storedChatBackground = ""
+
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.sizeCategory) private var sizeCategory
+    @Environment(\.colorScheme) private var colorScheme
 
     private let emptyStateSpacing: CGFloat = 16
     private var textHorizontalPadding: CGFloat {
@@ -203,6 +206,21 @@ struct MessagesListView: View {
                 CallBannerView(viewModel: callBannerViewModel)
             }
         }
+        .background(chatBackgroundView)
+    }
+
+    /// The chat background chosen in the settings, or nil for the default,
+    /// which keeps the theme's background.
+    private var chatBackgroundFill: ChatBackgroundFill? {
+        ChatBackground(storedValue: storedChatBackground).fill(for: colorScheme)
+    }
+
+    /// Drawn edge to edge behind the messages.
+    @ViewBuilder private var chatBackgroundView: some View {
+        if let fill = chatBackgroundFill {
+            ChatBackgroundView(fill: fill)
+                .ignoresSafeArea()
+        }
     }
 
     private func createMessagesStackView() -> some View {
@@ -275,7 +293,7 @@ struct MessagesListView: View {
             if contextMenuPresentingState != .dismissed && contextMenuPresentingState != .none {
                 return
             }
-            guard let snapshot = captureKeyWindowSnapshot(erasingRect: frame) else { return }
+            guard let snapshot = captureKeyWindowSnapshot(erasingRect: frame, chatBackground: chatBackgroundFill) else { return }
             model.contextMenuModel.messageFrame = frame
             model.contextMenuModel.configure(with: message)
             currentSnapshot = snapshot

@@ -122,6 +122,10 @@ public struct SwarmInfoView: View, StateEmittingView {
         static let expandedInfoBackdropStrength: CGFloat = 0.9
         static let topChromeSize: CGFloat = 100
         static let topChromeBlurRadius: CGFloat = 4
+        static let presenceDotSize: CGFloat = 24
+        static let presenceRingWidth: CGFloat = 3
+        static let titlePresenceDotSize: CGFloat = 12
+        static let titlePresenceSpacing: CGFloat = 8
     }
 
     // MARK: - Properties
@@ -349,6 +353,24 @@ public struct SwarmInfoView: View, StateEmittingView {
                 avatarImage
             }
         }
+        .overlay(alignment: .bottomTrailing) {
+            // Once expanded, the picture is no longer round: the dot moves
+            // beside the name.
+            if !isAvatarExpanded {
+                PresenceDot(presence: viewModel.presence,
+                            diameter: Layout.presenceDotSize,
+                            ringColor: Color(UIColor.systemGroupedBackground),
+                            ringWidth: Layout.presenceRingWidth)
+                    .padding(.trailing, presenceDotInset)
+                    .padding(.bottom, presenceDotInset)
+            }
+        }
+    }
+
+    /// Puts the center of the presence dot on the edge of the round picture.
+    private var presenceDotInset: CGFloat {
+        let radius = provider.size.points / 2
+        return radius - radius / CGFloat(2).squareRoot() - Layout.presenceDotSize / 2
     }
 
     private var expandableAvatar: some View {
@@ -368,14 +390,19 @@ public struct SwarmInfoView: View, StateEmittingView {
     }
 
     private var titleLabel: some View {
-        Text(viewModel.title)
-            .font(.title3.weight(.semibold))
-            .multilineTextAlignment(.center)
-            .truncationMode(.middle)
-            .lineLimit(2)
-            .foregroundStyle(headerForeground)
-            .copyableText(viewModel.title)
-            .accessibilityLabel(viewModel.title)
+        HStack(spacing: Layout.titlePresenceSpacing) {
+            if isAvatarExpanded {
+                PresenceDot(presence: viewModel.presence, diameter: Layout.titlePresenceDotSize)
+            }
+            Text(viewModel.title)
+                .font(.title3.weight(.semibold))
+                .multilineTextAlignment(.center)
+                .truncationMode(.middle)
+                .lineLimit(2)
+                .foregroundStyle(headerForeground)
+                .copyableText(viewModel.title)
+                .accessibilityLabel(viewModel.title)
+        }
     }
 
     private var displayedDescription: String {

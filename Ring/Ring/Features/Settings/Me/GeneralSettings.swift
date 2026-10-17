@@ -40,6 +40,7 @@ class GeneralSettings: ObservableObject {
             self.locationSharingDurationString = convertMinutesToText(minutes: locationSharingDuration)
         }
     }
+    @Published private(set) var chatBackground = ChatBackground.stored()
 
     let videoService: VideoService
 
@@ -75,6 +76,14 @@ class GeneralSettings: ObservableObject {
 
     func saveDownloadLimit() {
         UserDefaults.standard.set(Int(downloadLimit) ?? 0, forKey: acceptTransferLimitKey)
+    }
+
+    func setChatBackground(_ background: ChatBackground) {
+        if self.chatBackground == background {
+            return
+        }
+        background.store()
+        self.chatBackground = background
     }
 
     private func convertMinutesToText(minutes: Int) -> String {

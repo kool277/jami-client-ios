@@ -718,6 +718,28 @@ internal enum L10n {
     /// Unmute microphone
     internal static let unmuteAudio = L10n.tr("Localizable", "calls.unmuteAudio", fallback: "Unmute microphone")
   }
+  internal enum ChatBackground {
+    /// Dusk
+    internal static let dusk = L10n.tr("Localizable", "chatBackground.dusk", fallback: "Dusk")
+    /// Lavender
+    internal static let lavender = L10n.tr("Localizable", "chatBackground.lavender", fallback: "Lavender")
+    /// Meadow
+    internal static let meadow = L10n.tr("Localizable", "chatBackground.meadow", fallback: "Meadow")
+    /// Mint
+    internal static let mint = L10n.tr("Localizable", "chatBackground.mint", fallback: "Mint")
+    /// Ocean
+    internal static let ocean = L10n.tr("Localizable", "chatBackground.ocean", fallback: "Ocean")
+    /// Rose
+    internal static let rose = L10n.tr("Localizable", "chatBackground.rose", fallback: "Rose")
+    /// Sand
+    internal static let sand = L10n.tr("Localizable", "chatBackground.sand", fallback: "Sand")
+    /// Sky
+    internal static let sky = L10n.tr("Localizable", "chatBackground.sky", fallback: "Sky")
+    /// Slate
+    internal static let slate = L10n.tr("Localizable", "chatBackground.slate", fallback: "Slate")
+    /// Sunrise
+    internal static let sunrise = L10n.tr("Localizable", "chatBackground.sunrise", fallback: "Sunrise")
+  }
   internal enum Collab {
     /// Center
     internal static let alignCenter = L10n.tr("Localizable", "collab.alignCenter", fallback: "Center")
@@ -1090,6 +1112,12 @@ internal enum L10n {
     internal static let acceptTransferLimitDescription = L10n.tr("Localizable", "generalSettings.acceptTransferLimitDescription", fallback: "(MB, 0 = unlimited)")
     /// Automatically accept incoming files
     internal static let automaticAcceptIncomingFiles = L10n.tr("Localizable", "generalSettings.automaticAcceptIncomingFiles", fallback: "Automatically accept incoming files")
+    /// Chat background
+    internal static let chatBackground = L10n.tr("Localizable", "generalSettings.chatBackground", fallback: "Chat background")
+    /// Custom color
+    internal static let chatBackgroundCustom = L10n.tr("Localizable", "generalSettings.chatBackgroundCustom", fallback: "Custom color")
+    /// Default
+    internal static let chatBackgroundDefault = L10n.tr("Localizable", "generalSettings.chatBackgroundDefault", fallback: "Default")
     /// Donation campaign
     internal static let donationCampaign = L10n.tr("Localizable", "generalSettings.donationCampaign", fallback: "Donation campaign")
     /// Enable donation campaign

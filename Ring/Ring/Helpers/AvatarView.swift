@@ -383,6 +383,60 @@ struct AvatarSwiftUIView: View {
 
 }
 
+extension PresenceStatus {
+    /// What VoiceOver says for the presence dot, or nil when there is no dot.
+    var accessibilityText: String? {
+        switch self {
+        case .connected:
+            return L10n.Accessibility.userPresenceOnline
+        case .available:
+            return L10n.Accessibility.userPresenceAvailable
+        case .offline:
+            return nil
+        }
+    }
+}
+
+/// The dot shown on a contact's avatar while the contact is online, as in the
+/// conversation list. Nothing is shown while the contact is offline.
+struct PresenceDot: View {
+    let presence: PresenceStatus
+    let diameter: CGFloat
+    /// The color behind the avatar, for a ring that sets the dot off from it.
+    var ringColor: Color?
+    var ringWidth: CGFloat = 2
+
+    private var color: Color? {
+        switch presence {
+        case .connected:
+            return .onlinePresence
+        case .available:
+            return .availablePresence
+        case .offline:
+            return nil
+        }
+    }
+
+    var body: some View {
+        if let color = color, let label = presence.accessibilityText {
+            Circle()
+                .fill(color)
+                .frame(width: diameter, height: diameter)
+                .overlay(ring)
+                .accessibilityElement()
+                .accessibilityLabel(label)
+                .accessibilityAddTraits(.isImage)
+        }
+    }
+
+    @ViewBuilder private var ring: some View {
+        if let ringColor = ringColor {
+            Circle()
+                .stroke(ringColor, lineWidth: ringWidth)
+        }
+    }
+}
+
 protocol AvatarRelayProviding: AnyObject {
     func avatarRelay(for jamiId: String) -> BehaviorRelay<Data?>
     func nameRelay(for jamiId: String) -> BehaviorRelay<String>

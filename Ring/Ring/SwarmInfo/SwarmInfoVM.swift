@@ -33,6 +33,7 @@ class SwarmInfoVM: ObservableObject {
     @Published var selectedColor: String = String()
     @Published private(set) var isAdmin = false
     @Published private(set) var members = [ParticipantInfo]()
+    @Published private(set) var presence: PresenceStatus = .offline
 
     var swarmInfo: SwarmInfoProtocol
     var conversation: ConversationModel?
@@ -161,6 +162,7 @@ class SwarmInfoVM: ObservableObject {
         self.members = swarmInfo.participants.value
 
         setupBindings()
+        subscribePresence()
     }
 
     private func destructiveActionIcon(_ action: ConversationDestructiveAction, fallback: String) -> String {
@@ -215,6 +217,25 @@ class SwarmInfoVM: ObservableObject {
             }
         })
         .disposed(by: disposeBag)
+    }
+
+    /// Follows the contact's presence in a one-to-one conversation, as the
+    /// conversation does; there is none for a group or a blocked contact.
+    private func subscribePresence() {
+        guard let conversation,
+              conversation.isCoredialog(),
+              let jamiId = conversation.getParticipants().first?.jamiId,
+              let contact = injectionBag.contactsService.contact(withHash: jamiId),
+              !contact.banned,
+              let contactPresence = injectionBag.presenceService.getSubscriptionsForContact(contactId: jamiId) else {
+            return
+        }
+        contactPresence
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] status in
+                self?.presence = status
+            })
+            .disposed(by: disposeBag)
     }
 
     private func currentUserIsAdmin(in participants: [ParticipantInfo]) -> Bool {
