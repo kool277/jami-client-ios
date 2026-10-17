@@ -1,0 +1,863 @@
+﻿/*
+ * Copyright (C) 2017-2025 Savoir-faire Linux Inc.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA.
+ */
+
+// Global
+"global.accountSettings" = "Ҳисоб созламалари";
+"global.username" = "Фойдаланувчи номи";
+"global.recommended" = "Тавсия этилади";
+"global.password" = "Пароль";
+"global.registerAUsername" = "Фойдаланувчи номини рўйхатдан ўтказиш";
+"global.enterPassword" = "Паролни киритинг";
+"global.enterUsername" = "Фойдаланувчи номини киритинг";
+"global.cancel" = "Бекор қилиш";
+"global.blockContact" = "Контактни блоклаш";
+"global.removeAccount" = "Ҳисобни ўчириш";
+"global.incomingCall" = "Кирувчи қўнғироқ";
+"global.ok" = "ОК";
+"global.close" = "Ёпиш";
+"global.share" = "Улашиш";
+"global.forward" = "Узатиш";
+"global.save" = "Сақлаш";
+"global.resend" = "Қайта юбориш";
+"global.preview" = "Олдиндан кўриш";
+"global.accept" = "Қабул қилиш";
+"global.block" = "Блоклаш";
+"global.decline" = "Рад этиш";
+"global.name" = "Ном";
+"global.copy" = "Нусхалаш";
+"global.reply" = "Жавоб бериш";
+"global.search" = "Қидирилмоқда…";
+"global.supportJami" = "Jami лойиҳасини қўллаб-қувватлаш";
+"global.deleteMessage" = "Хабарни ўчириш";
+"global.deleteFile" = "Файлни қурилмадан ўчириш";
+"global.editMessage" = "Хабарни таҳрирлаш";
+"global.editing" = "Таҳрирланмоқда";
+"global.create" = "Яратиш";
+"global.edit" = "Таҳрирлаш";
+"global.remove" = "Ўчириш";
+"global.call" = "Қўнғироқ қилиш";
+"global.video" = "Видео";
+"global.time" = "Вақт";
+"global.editPassword" = "Паролни ўзгартириш";
+"global.confirmPassword" = "Паролни тасдиқлаш";
+"global.confirm" = "Тасдиқлаш";
+"global.cameraDisabled" = "Камерага рухсат ўчирилган. Бу функциядан фойдаланиш учун уни қурилма созламаларида ёқинг.";
+"global.confirm" = "Тасдиқлаш";
+"global.connect" = "Уланиш";
+"global.leave" = "Тарк этиш";
+
+// ProfileEditor
+"profileEditor.editGroup" = "Гуруҳни таҳрирлаш";
+"profileEditor.editContact" = "Контактни таҳрирлаш";
+"profileEditor.name" = "Ном";
+"profileEditor.groupNamePlaceholder" = "Гуруҳ номини киритинг";
+"profileEditor.contactNamePlaceholder" = "Исм киритинг";
+"profileEditor.description" = "Тавсиф";
+"profileEditor.descriptionPlaceholder" = "Тавсиф киритинг";
+"profileEditor.localChangesFooter" = "Бу исм ва расм фақат ушбу қурилмада кўринади.";
+"profileEditor.resetOriginal" = "Асл исм ва расмдан фойдаланиш";
+"profileEditor.resetOriginalHint" = "Контакт ўзи учун белгилаган исм ва расмни тиклайди";
+"profileEditor.changePicture" = "Расмни ўзгартириш";
+"profileEditor.changePictureHint" = "Камера ёки галереядан янги расм танланг";
+"profileEditor.noPicture" = "Расм йўқ";
+"profileEditor.pictureSelected" = "Расм танланди";
+"profileEditor.removePicture" = "Расмни ўчириш";
+"profileEditor.resetPicture" = "Асл расмдан фойдаланиш";
+"profileEditor.discardTitle" = "Ўзгаришлардан воз кечилсинми?";
+"profileEditor.discardMessage" = "Сақланмаган ўзгаришлар йўқолади.";
+"profileEditor.discard" = "Воз кечиш";
+"profileEditor.saveError" = "Ўзгаришларни сақлаб бўлмади. Қайтадан уриниб кўринг.";
+"profileEditor.editGroupHint" = "Гуруҳ муҳарририни очади";
+"profileEditor.editContactHint" = "Контакт муҳарририни очади";
+// Scan
+"scan.badQrCode" = "Яроқсиз QR-код";
+
+// SwarmCreation
+"swarmcreation.searchBar" = "Контактни қидириш…";
+"swarmcreation.addDescription" = "Тавсиф қўшиш";
+// Swarm
+"swarm.muteConversation" = "Суҳбат овозини ўчириш";
+"swarm.leaveConversation" = "Суҳбатни тарк этиш";
+"swarm.removeConversation" = "Суҳбатни ўчириш";
+"swarm.removeContact" = "Контактни ўчириш";
+"swarm.restartConversation" = "Суҳбатни қайта бошлаш";
+"swarm.conversationEnded" = "Суҳбат якунланди";
+"swarm.chooseColor" = "Суҳбат ранги";
+"swarm.typeOfSwarm" = "Суҳбат тури";
+"swarm.identifier" = "Идентификатор";
+"swarm.conversationId" = "Суҳбат идентификатори";
+"swarm.settings" = "Созламалар";
+"swarm.members" = "Аъзолар";
+"swarm.contactHeader" = "Контакт";
+"swarm.showContactQRCode" = "Контакт QR-кодини кўрсатиш";
+"swarm.shareContactInfo" = "Контакт маълумотларини улашиш";
+"swarm.accessibilityContactQRCode" = "Контакт QR-кодини кўрсатиш";
+"swarm.accessibilityContactQRCodeHint" = "Контакт QR-коди кўрсатилган экранни очади";
+"swarm.accessibilityContactShareHint" = "Контакт маълумотларини улашиш вариантларини очади";
+"swarm.accessibilityColorPicker" = "Суҳбат рангини танлаш";
+"swarm.conversationHeader" = "Суҳбат";
+"swarm.shareContactMessage" = "Ушбу контактни (%1@) Jami тақсимланган алоқа платформасида қўшишингиз мумкин: https://jami.net";
+"swarm.oneToOne" = "Шахсий";
+"swarm.adminInvitesOnly" = "Ёпиқ гуруҳ (таклифлар чекланган)";
+"swarm.invitesOnly" = "Ёпиқ гуруҳ";
+"swarm.publicChat" = "Очиқ гуруҳ";
+"swarm.others" = "Бошқалар";
+"swarm.member" = "Аъзо";
+"swarm.invited" = "Таклиф қилинган";
+"swarm.admin" = "Администратор";
+"swarm.blocked" = "Блокланган";
+"swarm.unknown" = "Номаълум";
+"swarm.left" = "Тарк этган";
+"swarm.invite" = "Таклиф қилиш";
+"swarm.inviteMembers" = "Аъзоларни таклиф қилиш";
+"swarm.inviteSelectedMembers" = "Танланган контактларни таклиф қилиш";
+"swarm.inviteMembersSelected" = "Танланган";
+"swarm.inviteMembersNotSelected" = "Танланмаган";
+"swarm.confirmLeaveConversation" = "Бу суҳбатни тарк этмоқчимисиз?";
+"swarm.Leave" = "Тарк этиш";
+"swarm.newGroup" = "Янги гуруҳ яратиш";
+"swarm.namePlaceholder" = "Гуруҳ номи";
+"swarm.explanationText" = "Гуруҳ яратилгандан сўнг исталган вақтда аъзоларни таклиф қилиш мумкин.";
+"swarm.customizeProfile" = "Гуруҳ профилини созлаш";
+"swarm.changePicture" = "Гуруҳ расмини ўзгартириш";
+"swarm.customize" = "Гуруҳни созлаш";
+"swarm.selectContacts" = "Контактларни танланг";
+
+// Contact Picker
+"contactPicker.calls" = "Қўнғироқлар";
+"contactPicker.contacts" = "Контактлар";
+
+// Smartlist
+"smartlist.yesterday" = "Кеча";
+"smartlist.results" = "Jami тармоғида қидирув";
+"smartlist.jamsResults" = "Ташкилот ичида қидирув";
+"smartlist.conversations" = "Суҳбатлар";
+"smartlist.conversationsSearchHint" = "Сизда ҳали суҳбатлар йўқ.";
+"smartlist.publicDirectoryHint" = "Контактларингизда бўлмаган Jami фойдаланувчилари.";
+"smartlist.jamsDirectoryHint" = "Ташкилотингиздаги, контактларингизда бўлмаган одамлар.";
+"smartlist.dialpad" = "Рақам териш";
+"smartlist.noConversationsFound" = "Қидирувга мос суҳбатлар топилмади.";
+"smartlist.newContact" = "Янги контакт";
+"smartlist.newGroup" = "Янги гуруҳ";
+"smartlist.accounts" = "Ҳисобларингиз";
+"smartlist.invitationReceived" = "Келган таклифлар";
+"smartlist.noResults" = "Натижа йўқ";
+"smartlist.noConversation" = "Суҳбатлар йўқ";
+"smartlist.searchBarPlaceholder" = "Исм киритинг…";
+"smartlist.searchBar" = "Қидириш";
+"smartlist.noNetworkConnectivity" = "Тармоққа уланиш йўқ";
+"smartlist.cellularAccess" = "Созламаларда мобил интернетга рухсат берилганига ишонч ҳосил қилинг.";
+"smartlist.accountsTitle" = "Ҳисоблар";
+"smartlist.addAccountButton" = "+ Ҳисоб қўшиш";
+"smartlist.noNumber" = "Танланган контактда рақам йўқ";
+"smartlist.selectOneNumber" = "Рақамлардан бирини танланг";
+"smartlist.invitations" = "Таклифлар";
+"smartlist.aboutJami" = "Jami ҳақида";
+"smartlist.inviteFriends" = "Дўстларни таклиф қилиш";
+"smartlist.disableDonation" = "Ҳозир эмас";
+"smartlist.donationExplanation" = "Агар Jami сизга ёқса ва мақсадимизга ишонсангиз, хайрия қилишни хоҳлайсизми?";
+"smartlist.inSynchronization" = "Синхронланмоқда…";
+
+// Conversation
+"conversation.addToContactsButton" = "Контактларга қўшиш";
+"conversation.sendInvitationButton" = "Таклиф юбориш";
+"conversation.addToContactsLabel" = "Контактларга қўшилсинми?";
+"conversation.notContactLabel" = "%@ контактлар рўйхатида йўқ";
+"conversation.messagePlaceholder" = "Хабар ёзинг:";
+"conversation.imageSaved" = "Сақланди";
+"conversation.errorSavingImage" = "Расмни сақлаб бўлмади";
+"conversation.errorSavingImageMessage" = "Расмни галереяга сақлашда хато юз берди.";
+"conversation.photoAccessRequiredMessage" = "Расмларни сақлаш учун Jami иловасига галереянгизга рухсат керак. Буни Созламаларда ёқишингиз мумкин.";
+"conversation.receivedRequest" = "%@ сизга суҳбатга таклиф юборди.";
+"conversation.incomingRequest" = "сизга суҳбатга таклиф юборди.";
+"conversation.requestMessage" = "Салом,\nСуҳбатга қўшилишни хоҳлайсизми?";
+"conversation.sendRequest" = "Суҳбатлашиш учун унга таклиф юборинг.";
+"conversation.sendRequestTitle" = "Суҳбатга таклиф юбориш";
+"conversation.synchronizationTitle" = "Сиз суҳбатга таклифни қабул қилдингиз.";
+"conversation.syncingTitle" = "Суҳбат синхронланмоқда";
+"conversation.synchronizationMessage" = "Суҳбатни синхронлаш учун %@ уланиши кутилмоқда…";
+"conversation.inReplyTo" = "Жавоб:";
+"conversation.repliedTo" = "%@ %@га жавоб берди";
+"conversation.yourself" = "Сиз";
+"conversation.edited" = "Таҳрирланган";
+"conversation.deletedMessage" = "%@ хабарни ўчирди";
+"conversation.contactBlocked" = "Контакт блокланган";
+// An ellipsis is not directly shown in the following typing indicator strings.
+// An ellipsis animation is shown when messages are being typed in the view.
+// An ellipsis "…" is visually displayed as ".", "..", or "..." using a timer.
+"conversation.typingIndicatorOneUser" = "%@ ёзмоқда";
+"conversation.typingIndicatorTwoUsers" = "%1@ ва %2@ ёзмоқда";
+"conversation.typingIndicatorOtherUsers" = "%1@, %2@ ва яна %3@ киши ёзмоқда";
+"conversation.typingIndicatorOthersUsers" = "%1@, %2@ ва яна %3@ киши ёзмоқда";
+"conversation.lastMessageDeleted" = "(ўчирилган хабар)";
+
+// Invitations
+"invitations.noInvitations" = "Таклифлар йўқ";
+"invitations.accepted" = "Қабул қилинди";
+"invitations.declined" = "Рад этилди";
+"invitations.blocked" = "Блокланди";
+"invitations.list" = "Келган таклифлар";
+
+// Walkthrough
+
+//Welcome Screen
+"welcome.title" = "Jami билан эркин ва махфий мулоқот қилинг";
+"welcome.text" = "Jami — фойдаланувчилар махфийлиги ва эркинликларини ҳимоя қилувчи эркин ва универсал алоқа платформаси";
+"welcome.haveAccount" = "Менда аллақачон ҳисоб бор";
+"welcome.linkDevice" = "Бошқа қурилмадан импорт қилиш";
+"welcome.linkBackup" = "Архив захира нусхасидан импорт қилиш";
+"welcome.createAccount" = "Jami ҳисобини яратиш";
+"welcome.connectToJAMS" = "Бошқарув серверига уланиш";
+
+// Creation Profile Screen
+"createProfile.skipCreateProfile" = "Ўтказиб юбориш";
+"createProfile.profileCreated" = "Кейинги";
+"createProfile.title" = "Профилингизни созланг";
+"createProfile.enterNameLabel" = "Кўрсатиладиган исмни киритинг";
+"createProfile.enterNamePlaceholder" = "Исм киритинг";
+"createProfile.subtitle" = "Профилингиз фақат контактларингиз билан улашилади. Профилни исталган вақтда ўзгартириш мумкин.";
+"createProfile.createProfilePicture" = "Профиль расмини яратиш";
+
+// Create Account form
+"createAccount.createAccountFormTitle" = "Jami сафига қўшилинг";
+"createAccount.lookingForUsernameAvailability" = "Фойдаланувчи номи бандлиги текширилмоқда…";
+"createAccount.invalidUsername" = "Фойдаланувчи номи нотўғри. Тўғри фойдаланувчи номини киритинг.";
+"createAccount.usernameAlreadyTaken" = "Бу фойдаланувчи номи банд";
+"createAccount.usernameValid" = "Фойдаланувчи номи бўш.";
+"createAccount.UsernameNotRegisteredTitle" = "Тармоқ хатоси";
+"createAccount.UsernameNotRegisteredMessage" = "Ҳисоб яратилди, лекин фойдаланувчи номи рўйхатдан ўтказилмади";
+"createAccount.timeoutTitle" = "Ҳисоб яратилди";
+"createAccount.timeoutMessage" = "Фойдаланувчи номи рўйхатдан ўтказилмоқда. Илтимос, кутинг…";
+"createAccount.sipConfigure" = "Мавжуд SIP ҳисобини созлаш";
+"createAccount.creatingAccount" = "Ҳисоб яратилмоқда";
+"createAccount.nameExplanation" = "Бошқалар сизни Jami тармоғида осонроқ топиши ва сиз билан боғланиши учун фойдаланувчи номини танлашингиз мумкин.";
+"createAccount.newAccount" = "Янги ҳисоб";
+"createAccount.encryptionEnabled" = "Пароль билан ҳимоя ёқилган";
+"createAccount.encrypt" = "Пароль билан ҳимоялаш";
+"createAccount.customize" = "Созлаш";
+"createAccount.encryptTitle" = "Ҳисобни пароль билан ҳимоялаш";
+"createAccount.encryptExplanation" = "Jami ҳисоби фақат ушбу қурилмада, ҳисоб калитларини ўз ичига олган архив сифатида яратилади ва сақланади. Архивга киришни ихтиёрий равишда пароль билан ҳимоялаш мумкин.";
+
+// Link To Account form
+"linkToAccount.importAccount" = "Ҳисобни импорт қилиш";
+"linkToAccount.showQrCode" = "QR-код";
+"linkToAccount.showPinCode" = "Аутентификация коди";
+"linkToAccount.actionRequired" = "Амал талаб қилинади.\nҲисобни манба қурилмада тасдиқланг.";
+"linkToAccount.allSet" = "Ҳисоб муваффақиятли импорт қилинди.";
+"linkToAccount.goToAccounts" = "Импорт қилинган ҳисобга ўтиш";
+"linkToAccount.exportInstructions" = "Манба қурилмада экспортни бошланг.";
+"linkToAccount.exportInstructionsPath" = "«Ҳисоб» → «Ҳисоб созламалари» → «Янги қурилмани боғлаш» бандини танланг.";
+"linkToAccount.scanQrCode" = "Тайёр бўлгач, QR-кодни сканерланг.";
+"linkToAccount.enterProvidedCode" = "Тайёр бўлгач, аутентификация кодини киритинг.";
+"linkToAccount.accountLockedWithPassword" = "Ҳисоб пароль билан ҳимояланган. Давом этиш учун ҳисоб паролини киритинг.";
+"linkToAccount.exit" = "Чиқиш";
+"linkToAccount.shareMessage" = "Сизнинг кодингиз: %@";
+"linkToAccount.alertTile" = "Ҳисобни боғлашни тўхтатмоқчимисиз?";
+"linkToAccount.alertMessage" = "Тўхтатиш ҳисобни импорт қилиш жараёнини бекор қилади.";
+
+// Import from Archive
+"importFromArchive.explanation" = "Jami ҳисобини маҳаллий архив файлидан импорт қилиш.";
+"importFromArchive.passwordExplanation" = "Агар ҳисоб пароль билан ҳимояланган бўлса, қуйидаги майдонни тўлдиринг.";
+"importFromArchive.title" = "Архивдан импорт қилиш";
+"importFromArchive.buttonTitle" = "Импорт қилиш";
+"importFromArchive.selectArchiveButton" = "Архив файлини танлаш";
+
+// Link to Jami Account Management Server (JAMS) form
+"linkToAccountManager.signIn" = "Кириш";
+"linkToAccountManager.title" = "Бошқарув сервери ҳисоби";
+"linkToAccountManager.accountManagerPlaceholder" = "Бошқарув сервери манзили";
+"linkToAccountManager.accountManagerLabel" = "Бошқарув сервери манзилини киритинг";
+"linkToAccountManager.jamsExplanation" = "Бошқарув сервери манзилини киритинг";
+"linkToAccountManager.enterCredentials" = "Бошқарув сервери ҳисоб маълумотларини киритинг";
+
+// Alerts
+"alerts.accountCannotBeFoundTitle" = "Ҳисоб хатоси";
+"alerts.accountCannotBeFoundMessage" = "Ҳисоб Jami тармоғида топилмади. У мавжуд қурилмадаги Jami иловасидан экспорт қилинганига ва киритилган маълумотлар тўғрилигига ишонч ҳосил қилинг.";
+"alerts.accountAddedTitle" = "Ҳисоб қўшилди";
+"alerts.accountNoNetworkTitle" = "Тармоқ хатоси";
+"alerts.accountNoNetworkMessage" = "Jami ҳисобини тақсимланган тармоққа қўшишда уланиш хатоси юз берди. Қайтадан уриниб кўринг. Муаммо такрорланса, тизим администраторига мурожаат қилинг.";
+"alerts.accountDefaultErrorTitle" = "Ҳисоб хатоси";
+"alerts.accountDefaultErrorMessage" = "Ҳисоб яратишда хато юз берди.";
+"alerts.profileTakePhoto" = "Суратга олиш";
+"alerts.profileUploadPhoto" = "Расм юклаш";
+"alerts.accountLinkedTitle" = "Ҳисоб боғланмоқда";
+"alerts.dbFailedTitle" = "Jami ишга туширилаётганда хато юз берди";
+"alerts.dbFailedMessage" = "Иловани ёпинг ва уни қайтадан очиб кўринг";
+"alerts.confirmBlockContact" = "Бу контактни блокламоқчимисиз? Бу контакт билан суҳбат тарихи ҳам бутунлай ўчирилади.";
+"alerts.confirmDeleteConversation" = "Бу суҳбатни бутунлай ўчирмоқчимисиз?";
+"alerts.confirmLeaveConversation" = "Бу суҳбатни тарк этмоқчимисиз?";
+"alerts.confirmRemoveOneToOneConversation" = "Бу суҳбатни ўчирмоқчимисиз? Мавжуд тарих ўчирилади. Агар бу контакт билан бошқа суҳбатингиз бўлмаса, янги суҳбат бошланиши мумкин.";
+"alerts.confimRemoveContact" = "Бу контактни ўчирмоқчимисиз? Мавжуд тарих ўчирилади.";
+"alerts.confirmDeleteConversationFromContact" = "Бу контакт билан суҳбатни ўчирмоқчимисиз?";
+"alerts.confirmDeleteConversationTitle" = "Суҳбатни ўчириш";
+"alerts.noMediaPermissionsTitle" = "Медиа учун рухсат берилмаган";
+"alerts.noLibraryPermissionsTitle" = "Галереяга рухсат берилмаган";
+"alerts.noLocationPermissionsTitle" = "Жойлашувга рухсат берилмаган";
+"alerts.errorWrongCredentials" = "Бошқарув серверига уланишда хато юз берди. Қайтадан уриниб кўринг. Муаммо такрорланса, тизим администраторига мурожаат қилинг.";
+"alerts.recordVideoMessage" = "Видео хабар ёзиб олиш";
+"alerts.recordAudioMessage" = "Аудио хабар ёзиб олиш";
+"alerts.uploadFile" = "Файл юбориш";
+"alerts.uploadPhoto" = "Галереяни очиш";
+"alerts.sendPhoto" = "Расм юбориш";
+"alerts.locationServiceIsDisabled" = "«Jami» қурилма жойлашувини аниқлай олиши учун «Жойлашув хизматлари»ни ёқинг.";
+"alerts.locationSharing" = "Жойлашувимни улашиш";
+"alerts.alreadylocationSharing" = "Бу фойдаланувчи билан жойлашув аллақачон улашилмоқда";
+"alerts.locationSharingDurationTitle" = "Жойлашув қанча вақт улашилсин?";
+"alerts.locationSharingDuration10min" = "10 дақиқа";
+"alerts.locationSharingDuration1hour" = "1 соат";
+"alerts.mapInformation" = "Харита маълумотлари";
+"alerts.openStreetMapCopyright" = "© OpenStreetMap иштирокчилари";
+"alerts.openStreetMapCopyrightMoreInfo" = "Батафсил";
+
+// Actions
+"actions.deleteAction" = "Ўчириш";
+"actions.backAction" = "Орқага";
+"actions.doneAction" = "Тайёр";
+"actions.goToSettings" = "Созламаларга ўтиш";
+"actions.stopLocationSharing" = "Улашишни тўхтатиш";
+
+// Calls
+"calls.ringing" = "Жирингламоқда…";
+"calls.connecting" = "Уланмоқда…";
+"calls.callFinished" = "Қўнғироқ тугади";
+"calls.currentCallWith" = "Қўнғироқ: ";
+"calls.maximize" = "Катталаштириш";
+"calls.minimize" = "Кичрайтириш";
+"calls.startPictureInPicture" = "«Тасвир ичида тасвир» режимини бошлаш";
+"calls.setModerator" = "Модератор қилиб тайинлаш";
+"calls.removeModerator" = "Модераторликдан чиқариш";
+"calls.muteAudio" = "Микрофонни ўчириш";
+"calls.unmuteAudio" = "Микрофонни ёқиш";
+"calls.raiseHand" = "Қўл кўтариш";
+"calls.lowerHand" = "Қўлни тушириш";
+"calls.inThisCall" = "Ушбу қўнғироқда (%@)";
+"calls.participantsInCall" = "Қўнғироқда %@ киши";
+"calls.peerRecording" = "Ёзиб олинмоқда";
+"calls.gridLayout" = "Тўр кўриниши";
+"calls.calling" = "Қўнғироқ қилинмоқда…";
+"calls.callingParticipants" = "Қўнғироқ қилинмоқда (%@)";
+"calls.stopCalling" = "Қўнғироқни тўхтатиш: %@";
+"calls.participantOptions" = "%@ учун параметрлар";
+"calls.inviting" = "Таклиф қилинмоқда…";
+"calls.activeCallLabel" = "Қўнғироқ давом этмоқда. Қўнғироққа қўшилмоқчимисиз? Кейинроқ суҳбат орқали ҳам қўшилишингиз мумкин.";
+"calls.activeCallInConversation" = "Қўнғироқ давом этмоқда. Қўнғироққа қўшилмоқчимисиз?";
+"calls.acceptWithAudio" = "Аудио билан қабул қилиш";
+"calls.acceptWithVideo" = "Видео билан қабул қилиш";
+
+// Account Page
+"accountPage.devicesListHeader" = "Қурилмалар";
+"accountPage.settingsHeader" = "Созламалар";
+"accountPage.notificationsHeader" = "Билдиришномалар";
+"accountPage.blockedContacts" = "Блокланган контактлар";
+"accountPage.unblockContact" = "Блокдан чиқариш";
+"accountPage.proxyAddressAlert" = "Прокси манзилини киритинг";
+"accountPage.noProxyExplanationLabel" = "Прокси ўчирилганда билдиришномаларни қабул қилиб бўлмайди.";
+"accountPage.proxyPaceholder" = "Прокси манзили";
+"accountPage.useProxyList" = "Проксилар рўйхатидан фойдаланиш";
+"accountPage.proxyListURL" = "Проксилар рўйхати манзили";
+"accountPage.proxyExplanation" = "Билдиришномалар прокси орқали етказилади. Стандарт проксидан фойдаланишингиз, ўз прокси манзилингизни киритишингиз ёки проксилар рўйхати жойлашган манзилни кўрсатишингиз мумкин.";
+"accountPage.proxyHeader" = "Прокси";
+"accountPage.currentProxy" = "Жорий прокси";
+"accountPage.enableNotifications" = "Билдиришномаларни ёқиш";
+"accountPage.proxyDisabledAlertTitle" = "Прокси-сервер ўчирилган";
+"accountPage.proxyDisabledAlertBody" = "Билдиришномаларни олиш учун проксини ёқинг";
+"accountPage.removeDeviceTitle" = "Қурилмани ўчириш";
+"accountPage.revokeDeviceMessage" = "Бу қурилмани ўчирмоқчимисиз? Бу амални ортга қайтариб бўлмайди.";
+"accountPage.revokeDeviceButton" = "Ўчириш";
+"accountPage.revokeDevicePlaceholder" = "Ҳисоб паролини киритинг";
+"accountPage.deviceRevoked" = "Қурилмани ўчириш якунланди";
+"accountPage.deviceRevocationProgress" = "Ўчирилмоқда…";
+"accountPage.deviceRevocationSuccess" = "Қурилма ўчирилди";
+"accountPage.deviceRevocationTryAgain" = "Қайта уриниш";
+"accountPage.deviceRevocationWrongPassword" = "Пароль нотўғри";
+"accountPage.deviceRevocationUnknownDevice" = "Номаълум қурилма";
+"accountPage.deviceRevocationError" = "Қурилмани ўчиришда хато";
+"accountPage.linkDeviceTitle" = "Бошқа қурилмани боғлаш";
+"accountPage.other" = "Бошқа";
+"accountPage.removeAccountMessage" = "Агар ҳисобнинг захира нусхаси олинмаган ёки у бошқа қурилмага қўшилмаган бўлса, ҳисоб ва рўйхатдан ўтган фойдаланувчи номи ҚАЙТАРИБ БЎЛМАС ДАРАЖАДА ЙЎҚОЛАДИ.";
+"accountPage.inviteFriends" = "Дўстларни таклиф қилиш";
+"accountPage.contactMeOnJamiTitle" = "Jami орқали мен билан боғланинг!";
+"accountPage.contactMeOnJamiContant" = "Jami тақсимланган алоқа платформасида «%s» орқали мен билан боғланинг: https://jami.net";
+"accountPage.passwordPlaceholder" = "Ҳисоб паролини киритинг";
+"accountPage.usernamePlaceholder" = "Керакли фойдаланувчи номини киритинг";
+"accountPage.registerNameErrorMessage" = "Бу фойдаланувчи номи банд.";
+"accountPage.usernameRegistering" = "Рўйхатдан ўтказилмоқда";
+"accountPage.usernameRegisterAction" = "Рўйхатдан ўтказиш";
+"accountPage.usernameRegistrationFailedTitle" = "Рўйхатдан ўтказиб бўлмади";
+"accountPage.usernameRegistrationFailed" = "Ҳисоб паролини текширинг.";
+"accountPage.createPassword" = "Пароль ўрнатиш";
+"accountPage.changePassword" = "Паролни ўзгартириш";
+"accountPage.currentPasswordPlaceholder" = "Жорий паролни киритинг";
+"accountPage.newPasswordPlaceholder" = "Янги паролни киритинг";
+"accountPage.newPasswordConfirmPlaceholder" = "Янги паролни тасдиқланг";
+"accountPage.changePasswordError" = "Пароль нотўғри";
+"accountPage.enableBoothMode" = "Киоск режимини ёқиш";
+"accountPage.disableBoothMode" = "Киоск режимини ўчириш";
+"accountPage.disableBoothModeExplanation" = "Ҳисоб паролини киритинг";
+"accountPage.boothModeExplanation" = "Киоск режимида суҳбатлар тарихи сақланмайди ва Jami имкониятлари фақат чиқувчи қўнғироқлар билан чекланади. Киоск режими ёқилганда барча суҳбатларингиз ўчирилади.";
+"accountPage.noBoothMode" = "Киоск режимини ёқиш учун аввал ҳисобни пароль билан ҳимояланг.";
+"accountPage.boothModeAlertMessage" = "Киоск режими ёқилгач, барча суҳбатлар ўчирилади.";
+"accountPage.peerDiscovery" = "Маҳаллий тенгдошларни аниқлашни ёқиш";
+"accountPage.peerDiscoveryExplanation" = "Маҳаллий тармоқда ўзини эълон қилаётган бошқа DHT тугунларига уланиш";
+"accountPage.autoRegistration" = "Муддати тугагач автоматик рўйхатдан ўтказиш";
+"accountPage.connectivityHeader" = "Уланиш";
+"accountPage.turnEnabled" = "TURN серверини ёқиш";
+"accountPage.turnServer" = "TURN манзили";
+"accountPage.turnUsername" = "TURN фойдаланувчи номи";
+"accountPage.turnPassword" = "TURN пароли";
+"accountPage.turnRealm" = "TURN домени";
+"accountPage.upnpEnabled" = "UPnP протоколидан фойдаланиш";
+"accountPage.stunEnabled" = "STUN серверидан фойдаланиш";
+"accountPage.stunServer" = "STUN манзили";
+"accountPage.publicAddressHeader" = "Оммавий манзил";
+"accountPage.allowIPAutoRewrite" = "IP манзилни автоматик қайта ёзишга рухсат бериш";
+"accountPage.publishedSameAsLocal" = "Эълон қилинадиган манзил маҳаллий манзил билан бир хил";
+"accountPage.publishedAddress" = "Манзил";
+"accountPage.publishedPort" = "Порт";
+"accountPage.security" = "Хавфсизлик";
+"accountPage.enableSRTP" = "SDES калит алмашинувини ёқиш";
+"accountPage.encryptNegotiation" = "Келишувни шифрлаш (TLS)";
+"accountPage.registerNameExplanation" = "Бошқалар сизни Jami тармоғида осонроқ топиши ва сиз билан боғланиши учун фойдаланувчи номини рўйхатдан ўтказинг.";
+"accountPage.profileHeader" = "Профиль";
+"accountPage.profileNameNotSelected" = "Исм танланмаган";
+"accountPage.accountHeader" = "Ҳисоб";
+"accountPage.profileName" = "Профиль номи";
+"accountPage.profileNamePlaceholder" = "Профиль номини киритинг";
+"accountPage.editProfile" = "Профилни таҳрирлаш";
+"accountPage.manageAccount" = "Ҳисобни бошқариш";
+"accountPage.encryptAccount" = "Пароль";
+"accountPage.passwordExplanation" = "Jami ҳисобингиз фақат ушбу қурилмада, ҳисоб калитларини ўз ичига олган архив сифатида сақланади. Бу архивга киришни пароль билан ҳимоялаш мумкин.";
+"accountPage.passwordsDoNotMatch" = "Пароллар мос келмади.";
+"accountPage.passwordCreated" = "Пароль ўрнатилди";
+"accountPage.passwordUpdated" = "Пароль янгиланди";
+"accountPage.linkedDevices" = "Боғланган қурилмалар";
+"accountPage.unlink" = "Ажратиш";
+"accountPage.generatingPin" = "ПИН-код яратилмоқда…";
+"accountPage.passwordForPin" = "Ҳисоб пароль билан ҳимояланган. ПИН-код яратиш учун паролни киритинг.";
+"accountPage.pinExplanationTitle" = "Бошқа қурилмада";
+"accountPage.pinExplanationMessage" = "Jami иловасини ўрнатинг ва ишга туширинг. «Бошқа қурилмадан импорт қилиш» бандини танланг ва QR-кодни сканерланг. Ёки ПИН-кодни қўлда киритинг.";
+"accountPage.pinError" = "ПИН-код яратишда хато юз берди.";
+"accountPage.notificationTitle" = "Билдиришномалар";
+"accountPage.notificationError" = "Jami учун билдиришномалар ўчирилган. Бу функциядан фойдаланиш учун уларни қурилма созламаларида ёқинг.";
+"accountPage.callsFromUnknownContacts" = "Нотаниш контактлардан қўнғироқларга рухсат бериш.";
+"accountPage.accountSettingsExplanation" = "Бу созламалар фақат ушбу ҳисобга қўлланилади.";
+"accountPage.appSettings" = "Илова созламалари";
+"accountPage.appSettingsExplanation" = "Бу созламалар бутун иловага қўлланилади.";
+"accountPage.connectivityAndConfiguration" = "Уланиш ва конфигурация";
+"accountPage.sipExpirationTime" = "Рўйхатдан ўтиш муддати (сония)";
+"accountPage.tlsVerifyServerCertificates" = "Сервер TLS сертификатларини текшириш";
+"accountPage.tlsVerifyClientCertificates" = "Мижоз TLS сертификатларини текшириш";
+"accountPage.tlsRequireTlsCertificate" = "Кирувчи TLS уланишлари учун сертификат талаб қилиш";
+"accountPage.tlsDisableSecureDlgCheck" = "Кирувчи TLS маълумотлари учун хавфсиз диалог текширувини ўчириш";
+"accountPage.editSipExpirationTime" = "Амал қилиш муддати";
+"accountPage.selectSipExpirationTime" = "Рўйхатдан ўтиш муддатини (сонияларда) белгиланг";
+"accountPage.invalidSipExpirationTime" = "60 дан 604800 сониягача бўлган қиймат киритинг";
+"accountPage.invalidPort" = "0 дан 65535 гача бўлган қиймат киритинг";
+"accountPage.invalidAddress" = "Тўғри манзил киритинг";
+"accountPage.thisDevice" = "Ушбу қурилма";
+"accountPage.otherDevices" = "Бошқа боғланган қурилмалар";
+"accountPage.accountIdentity" = "Ҳисоб идентификатори";
+"accountPage.bootstrap" = "Бошланғич тугун";
+"accountPage.dhtConfiguration" = "OpenDHT созламалари";
+"accountPage.nameServer" = "Номлар сервери";
+"accountPage.chats" = "Суҳбатлар";
+"accountPage.typingIndicator" = "Ёзиш индикатори";
+"accountPage.typingIndicatorExplanation" = "Хабар ёзилаётганини кўрсатиш.";
+
+// Backup Account
+"backupAccount.explanation" = "Бу Jami ҳисоби фақат ушбу қурилмада мавжуд. Агар қурилма йўқолса ёки илова ўчириб ташланса, ҳисоб йўқолади. Бу ҳисобнинг захира нусхасини яратиш тавсия этилади.";
+"backupAccount.title" = "Ҳисоб захира нусхаси";
+"backupAccount.creating" = "Захира нусха яратилмоқда";
+"backupAccount.archiveName" = "Архив учун ном танланг.";
+"backupAccount.archiveNamePlaceholder" = "Архив номи";
+"backupAccount.passwordRequest" = "Ҳисоб паролини киритинг.";
+"backupAccount.backupButton" = "Захиралаш";
+"backupAccount.documentPickerButton" = "Захира нусха жойлашувини очиш";
+"backupAccount.exportSuccess" = "Захира нусха яратилди";
+"backupAccount.errorWrongLocation" = "Танланган файл йўли нотўғри. Бошқа жойни танланг.";
+"backupAccount.errorAccessDenied" = "Танланган жойга кириш рад этилди.";
+"backupAccount.errorFailed" = "Ҳисобни экспорт қилишда хато юз берди.";
+
+// Account
+"account.sipServer" = "Сервер";
+"account.port" = "Порт";
+"account.proxyServer" = "Прокси";
+"account.createSipAccount" = "SIP ҳисобини созлаш";
+"account.sipAccount" = "SIP ҳисоби";
+"account.configure" = "Созлаш";
+"account.advancedFeatures" = "Қўшимча имкониятлар";
+"account.serverLabel" = "Манзилни киритинг";
+"account.portLabel" = "Порт рақамини киритинг";
+"account.accountStatus" = "Ҳисоб ҳолати";
+"account.enableAccount" = "Ҳисобни ёқиш";
+"account.statusOnline" = "Онлайн";
+"account.statusOffline" = "Офлайн";
+"account.statusConnecting" = "Уланмоқда";
+"account.statusUnknown" = "Номаълум";
+"account.statusConnectionerror" = "Уланиш хатоси";
+"account.needMigration" = "Ҳисобни кўчириш талаб қилинади.";
+"account.me" = "Сиз";
+
+// Block List Page
+"blockListPage.noBlockedContacts" = "Блокланган контактлар йўқ";
+
+// Link New Device
+"linkDevice.title" = "Янги қурилмани боғлаш";
+"linkDevice.networkError" = "Ҳисобни экспорт қилишда тармоқ хатоси юз берди.";
+"linkDevice.errorWrongPassword" = "Қурилмани боғлашда аутентификация хатоси юз берди. Маълумотларни текширинг ва қайтадан уриниб кўринг.";
+"linkDevice.errorNetwork" = "Ҳисобни боғлашда тармоқ хатоси юз берди. Уланишни текширинг ва қайтадан уриниб кўринг.";
+"linkDevice.errorTimeout" = "Амални кутиш вақти тугади. Қайтадан уриниб кўринг.";
+"linkDevice.errorCode" = "Код яратишда хато юз берди. Қайтадан уриниб кўринг.";
+"linkDevice.errorWrongData" = "Ҳисобни экспорт қилишда хато юз берди. Қайтадан уриниб кўринг.";
+"linkDevice.initialInfo" = "Янги қурилмада янги ҳисоб қўшишни бошланг.";
+"linkDevice.infoAddAccount" = "«Ҳисоб қўшиш» → «Бошқа қурилмадан уланиш» бандини танланг.";
+"linkDevice.infoQRCode" = "Тайёр бўлгач, QR-кодни сканерланг.";
+"linkDevice.infoCode" = "Тайёр бўлгач, кодни киритинг ва «Уланиш» тугмасини босинг.";
+"linkDevice.connecting" = "Янги қурилмангизга уланилмоқда…";
+"linkDevice.authenticationInfo" = "Қуйидаги IP манзилда янги қурилма топилди. Бу сизмисиз? Ҳисобни экспорт қилишни давом эттириш учун «Тасдиқлаш» тугмасини босинг.";
+"linkDevice.newDeviceIP" = "Янги қурилманинг IP манзили: %1@";
+"linkDevice.code" = "код";
+"linkDevice.wrongEntry" = "Янги қурилма идентификатори танилмади. Юқоридаги кўрсатмаларга амал қилинг.";
+"linkDevice.exportInProgress" = "Ҳисоб янги қурилмага экспорт қилинмоқда. Янги қурилмада импортни тасдиқланг.";
+"linkDevice.completed" = "Ҳисоб янги қурилмага муваффақиятли импорт қилинди.";
+
+// Contact Page
+"contactPage.startAudioCall" = "Аудиоқўнғироқни бошлаш";
+"contactPage.startVideoCall" = "Видеоқўнғироқни бошлаш";
+"contactPage.send" = "Юбориш";
+"contactPage.leaveConversation" = "Суҳбатни тарк этиш";
+
+// DataTransfer
+"dataTransfer.readableStatusCreated" = "Тайёрланмоқда…";
+"dataTransfer.readableStatusError" = "Хато";
+"dataTransfer.readableStatusAwaiting" = "Кутилмоқда…";
+"dataTransfer.readableStatusOngoing" = "Узатилмоқда";
+"dataTransfer.readableStatusCanceled" = "Бекор қилинди";
+"dataTransfer.sendingFailed" = "Юборишда хато юз берди.";
+"dataTransfer.readableStatusSuccess" = "Якунланди";
+"dataTransfer.recordInBackgroundWarning" = "Бир нечта илова билан бир вақтда ишлаётганда видео ёзиб олиш видео сифатини пасайтириши мумкин. Энг яхши натижа учун бошқа иловалардан фойдаланмаётганда ёзиб олинг";
+
+// Notifications
+"notifications.missedCall" = "Жавобсиз қўнғироқ";
+"notifications.newFile" = "Янги файл";
+"notifications.locationSharingStarted" = "Сизга жойлашув улашиш бошланди";
+"notifications.locationSharingStopped" = "Сизга жойлашув улашиш тўхтатилди";
+"dataTransfer.readableStatusDecline" = "Рад этиш";
+"dataTransfer.readableStatusAccept" = "Қабул қилиш";
+"dataTransfer.infoMessage" = "Ёзиб олишни бошлаш учун босинг";
+"dataTransfer.sendMessage" = "Юбориш";
+
+
+// Generated Message
+"generatedMessage.contactAdded" = "Таклиф олинди";
+"generatedMessage.swarmCreated" = "Суҳбат яратилди";
+"generatedMessage.invitationReceived" = "%@ суҳбатга таклиф қилинди.";
+"generatedMessage.invitationAccepted" = "%@ суҳбатга қўшилди.";
+"generatedMessage.youJoined" = "Сиз суҳбатга қўшилдингиз.";
+"generatedMessage.contactBlocked" = "%@ суҳбатда блокланди.";
+"generatedMessage.contactUnblocked" = "%@ суҳбатда блокдан чиқарилди.";
+"generatedMessage.outgoingCall" = "Чиқувчи қўнғироқ";
+"generatedMessage.missedOutgoingCall" = "Жавобсиз чиқувчи қўнғироқ";
+"generatedMessage.missedIncomingCall" = "Жавобсиз кирувчи қўнғироқ";
+"generatedMessage.liveLocationSharing" = "Жойлашувни жонли улашиш";
+"generatedMessage.contactLeftConversation" = "%@ суҳбатни тарк этди.";
+"generatedMessage.nonSwarmInvitationReceived" = "Сиз таклиф юбордингиз.";
+"generatedMessage.nonSwarmInvitationAccepted" = "Таклифингиз қабул қилинди.";
+
+// General Settings
+"generalSettings.videoSettings" = "Видео созламалари";
+"generalSettings.videoAcceleration" = "Видео тезлаштиришни ёқиш";
+"generalSettings.fileTransfer" = "Файл узатиш";
+"generalSettings.locationSharing" = "Жойлашувни улашиш";
+"generalSettings.automaticAcceptIncomingFiles" = "Кирувчи файлларни автоматик қабул қилиш";
+"generalSettings.acceptTransferLimit" = "Автоматик юклаб олишнинг максимал ҳажми";
+"generalSettings.acceptTransferLimitDescription" = "(МБ, 0 = чекланмаган)";
+"generalSettings.limitLocationSharingDuration" = "Жойлашувни улашиш давомийлигини чеклаш";
+"generalSettings.locationSharingDuration" = "Жойлашувни улашиш давомийлиги";
+"generalSettings.donationCampaign" = "Хайрия кампанияси";
+"generalSettings.enableDonationCampaign" = "Хайрия кампаниясини ёқиш";
+"generalSettings.chatBackground" = "Суҳбат фони";
+"generalSettings.chatBackgroundDefault" = "Стандарт";
+"generalSettings.chatBackgroundCustom" = "Ихтиёрий ранг";
+
+// Log View
+"logView.title" = "Диагностика";
+"logView.description" = "Диагностика журнали созламаларини очиш";
+"logView.startLogging" = "Журнал ёзишни бошлаш";
+"logView.stopLogging" = "Журнал ёзишни тўхтатиш";
+"logView.saveError" = "Файлни сақлашда хато юз берди.";
+"logView.shareError" = "Файлни улашишда хато юз берди.";
+
+// Migrate Account
+"migrateAccount.title" = "Ҳисобни кўчириш";
+"migrateAccount.migrateButton" = "Ҳисобни кўчириш";
+"migrateAccount.explanation" = "Ҳисобни кўчириш талаб қилинади.";
+"migrateAccount.passwordExplanation" = "Ҳисобни кўчиришни давом эттириш учун ҳисоб паролини киритинг.";
+"migrateAccount.error" = "Ҳисобни кўчиришда хато юз берди. Қайта уриниб кўринг ёки ҳисобни ўчиринг.";
+"migrateAccount.migrating" = "Кўчирилмоқда…";
+"migrateAccount.migrateAnother" = "Бошқа ҳисобни кўчириш";
+
+// About Jami
+"aboutJami.declaration1" = "Jami — GNU пакети, фойдаланувчиларининг эркинлиги ва махфийлигини ҳурмат қилувчи универсал ва тақсимланган тенгдошлараро алоқа дастури. Батафсил маълумот учун";
+"aboutJami.declaration2" = "сайтига ташриф буюринг.";
+"aboutJami.noWarranty1" = "Бу дастур ҳеч қандай кафолатсиз тақдим этилади. Батафсил маълумот учун";
+"aboutJami.noWarranty2" = "3-версия ёки ундан кейингисига қаранг.";
+"aboutJami.contribute" = "Ҳисса қўшиш";
+"aboutJami.feedback" = "Фикр-мулоҳаза";
+"aboutJami.developers" = "Дастурчилар";
+"aboutJami.media" = "Медиа";
+"aboutJami.communityManagement" = "Ҳамжамиятни бошқариш";
+"aboutJami.specialThanks" = "Алоҳида миннатдорчилик";
+"aboutJami.info" = "Бу Jami лойиҳасига кўп вақт сарфлаб, фойдали натижаларга эришган инсонлар рўйхати. Рўйхатга қўшилишни истаган бундай ҳисса қўшувчилар биз билан боғлансин.";
+"aboutJami.header" = "Кўп йиллик меҳнати билан ушбу дастурни ҳозирги ҳолатига келтирган барча ҳисса қўшувчиларимизга миннатдорчилик билдирамиз.";
+
+// Accessibility
+"accessibility.close" = "Ёпиш";
+"accessibility.smartListSwitchAccounts" = "Ҳисобни алмаштириш";
+"accessibility.smartListConnectedAs" = "Жорий ҳисоб: %@";
+"accessibility.smartListAddAccount" = "Ҳисоб қўшиш";
+"accessibility.aboutJamiTitle" = "Jami ҳақида";
+"accessibility.welcomeToJamiTitle" = "Jami иловасига хуш келибсиз";
+"accessibility.createAccountVerifyUsernamePrompt" = "Бандлигини текшириш учун фойдаланувчи номини киритинг.";
+"accessibility.avatarExpandHint" = "Расмни катталаштириш учун икки марта босинг";
+"accessibility.avatarCollapseHint" = "Расмни кичрайтириш учун икки марта босинг";
+"accessibility.profilePicturePicker" = "Профиль расми";
+"accessibility.profilePicturePickerHint" = "Суратга олиш ёки галереядан расм танлаш учун икки марта босинг";
+"accessibility.swarmPicturePicker" = "Гуруҳ расми";
+"accessibility.accountSummaryQrCode" = "QR-код";
+"accessibility.accountSummaryQrCodeHint" = "Ҳисоб QR-кодини кўриш учун икки марта босинг";
+"accessibility.accountSummaryEditProfileHint" = "Профилни таҳрирлаш учун икки марта босинг";
+"accessibility.accountSummaryEditSettingsButton" = "Созламалар";
+"accessibility.conversationStartVoiceCall" = "%@ билан аудиоқўнғироқни бошлаш";
+"accessibility.conversationStartVideoCall" = "%@ билан видеоқўнғироқни бошлаш";
+"accessibility.conversationComposeMessage" = "Хабар ёзиш";
+"accessibility.conversationShareMedia" = "Медиа улашиш";
+"accessibility.conversationCameraHint" = "Камерани очиш учун икки марта босинг";
+"accessibility.audioPlayerPlay" = "Ижро этиш";
+"accessibility.audioPlayerPause" = "Пауза";
+"accessibility.conversationRowUnreadCount" = "%@ та ўқилмаган хабар.";
+"accessibility.conversationRowBlocked" = "Суҳбат блокланган";
+"accessibility.conversationRowSyncing" = "Синхронлаш давом этмоқда";
+"accessibility.conversationRowLastMessage" = "Охирги хабар: %@";
+"accessibility.userPresenceOnline" = "Онлайн";
+"accessibility.userPresenceAvailable" = "Алоқада";
+"accessibility.pendingRequestsRowPlural" = "Келган таклифлар: %@ та кутилаётган таклиф";
+"accessibility.pendingRequestsRowSingular" = "Келган таклиф: %@ та кутилаётган таклиф";
+"accessibility.pendingRequestsRowHint" = "Келган таклифларни кўриб чиқиш ва уларга жавоб бериш учун икки марта босинг";
+"accessibility.pendingRequestsListBlockUser" = "Таклиф юборувчини блоклаш";
+"accessibility.pendingRequestsListRejectInvitation" = "Таклифни рад этиш";
+"accessibility.pendingRequestsListAcceptInvitation" = "Таклифни қабул қилиш";
+"accessibility.messageBubbleDeleted" = "Хабар ўчирилди";
+"accessibility.messageBubbleEdited" = "Таҳрирланган";
+"accessibility.messageBubbleRead" = "Ўқилган";
+"accessibility.messageBubbleUnread" = "Ўқилмаган";
+"accessibility.textNotAvailable" = "Бўш матнли хабар олинди (%@). У нотўғри юборилган бўлиши мумкин.";
+"accessibility.fileTransferNoName" = "Файл олинди (%@), номи мавжуд эмас";
+"accessibility.inReply" = "Хабарга жавоб";
+"accessibility.text.receivedOn" = "%1@, хабар олинган вақт: %2@";
+"accessibility.text.sentOn" = "%1@, хабар юборилган вақт: %2@";
+"accessibility.fileTransfer.receivedOn" = "Файл: %1@, олинган вақт: %2@";
+"accessibility.fileTransfer.sentOn" = "Файл: %1@, юборилган вақт: %2@";
+"accessibility.call.lasted" = "Давомийлиги: %@";
+"accessibility.calls.default.toggleAudio" = "Микрофонни ўчириш";
+"accessibility.calls.default.toggleVideo" = "Камерани ёқиш";
+"accessibility.calls.default.pauseCall" = "Қўнғироқни пауза қилиш";
+"accessibility.calls.default.endCall" = "Қўнғироқни тугатиш";
+"accessibility.calls.default.addParticipant" = "Иштирокчи қўшиш";
+"accessibility.calls.default.switchCamera" = "Камерани алмаштириш";
+"accessibility.calls.default.toggleSpeaker" = "Карнайни ёқиш";
+"accessibility.calls.default.openConversation" = "Суҳбатни очиш";
+"accessibility.calls.default.showDialpad" = "Рақам териш панелини кўрсатиш";
+"accessibility.calls.default.raiseHand" = "Қўл кўтариш";
+
+"accessibility.calls.alter.toggleAudio" = "Микрофонни ёқиш";
+"accessibility.calls.alter.toggleVideo" = "Камерани ўчириш";
+"accessibility.calls.alter.pauseCall" = "Қўнғироқни давом эттириш";
+"accessibility.calls.alter.endCall" = "Қўнғироқни тугатиш";
+"accessibility.calls.alter.addParticipant" = "Иштирокчи қўшиш";
+"accessibility.calls.alter.switchCamera" = "Камерани алмаштириш";
+"accessibility.calls.alter.toggleSpeaker" = "Карнайни ўчириш";
+"accessibility.calls.alter.openConversation" = "Суҳбатни очиш";
+"accessibility.calls.alter.showDialpad" = "Рақам териш панелини кўрсатиш";
+"accessibility.calls.alter.raiseHand" = "Қўлни тушириш";
+"accessibility.conference.minimize" = "Кичрайтириш";
+"accessibility.conference.maximize" = "Катталаштириш";
+"accessibility.conference.setModerator" = "Модератор қилиб тайинлаш";
+"accessibility.conference.unsetModerator" = "Модераторликдан чиқариш";
+"accessibility.conference.muteAudio" = "Овозни ўчириш";
+"accessibility.conference.unmuteAudio" = "Овозни ёқиш";
+"accessibility.conference.endCall" = "Қўнғироқни тугатиш";
+"accessibility.conference.lowerHand" = "Қўлни тушириш";
+"accessibility.conference.showParticipants" = "Иштирокчиларни кўрсатиш";
+"accessibility.conference.showFullVideo" = "Видеони тўлиқ кўрсатиш";
+"accessibility.conference.cropVideo" = "Видеони кесиш";
+"accessibility.conference.localPreview" = "Сизнинг видеонгиз";
+"accessibility.conference.hideLocalPreview" = "Видеонгизни яшириш";
+"accessibility.conference.showLocalPreview" = "Видеонгизни кўрсатиш";
+"accessibility.conference.speaking" = "Гапирмоқда";
+"accessibility.conference.handRaised" = "Қўл кўтарилган";
+"accessibility.conference.moderator" = "Модератор";
+"accessibility.conference.recording" = "Ёзиб олинмоқда";
+"accessibility.conference.microphoneMuted" = "Микрофон ўчирилган";
+"accessibility.conference.cameraOff" = "Камера ўчиқ";
+"accessibility.account.tokenQRcode" = "Токен QR-коди";
+
+// Swarm Colors
+"swarmColors.vibrantPink" = "Ёрқин пушти";
+"swarmColors.purple" = "Бинафшаранг";
+"swarmColors.violet" = "Сиёҳранг";
+"swarmColors.indigoBlue" = "Тўқ кўк";
+"swarmColors.skyBlue" = "Ҳаворанг";
+"swarmColors.cyan" = "Мовий";
+"swarmColors.teal" = "Тўқ мовий";
+"swarmColors.green" = "Яшил";
+"swarmColors.limeGreen" = "Оч яшил";
+"swarmColors.mediumGray" = "Ўртача кулранг";
+"swarmColors.yellowGreen" = "Сарғиш яшил";
+"swarmColors.amber" = "Қаҳрабо";
+"swarmColors.brightOrange" = "Ёрқин тўқ сариқ";
+"swarmColors.brown" = "Жигарранг";
+"swarmColors.steelBlue" = "Кулранг кўк";
+
+// Chat Background
+"chatBackground.sky" = "Осмон";
+"chatBackground.mint" = "Ялпиз";
+"chatBackground.sand" = "Қум";
+"chatBackground.rose" = "Атиргул";
+"chatBackground.lavender" = "Лаванда";
+"chatBackground.slate" = "Кулранг";
+"chatBackground.sunrise" = "Тонг";
+"chatBackground.ocean" = "Океан";
+"chatBackground.meadow" = "Ўтлоқ";
+"chatBackground.dusk" = "Шом";
+
+// Share extension
+"shareExtension.noAccount.title" = "Ҳисоб топилмади";
+"shareExtension.noAccount.description" = "Давом этиш учун асосий иловада ҳисоб яратинг.";
+"shareExtension.unsupportedType.title" = "Қўллаб-қувватланмайдиган контент";
+"shareExtension.unsupportedType.description" = "Танланган контентни улашиш ҳозирча қўллаб-қувватланмайди.";
+"shareExtension.sending" = "Юборилмоқда…";
+"shareExtension.noSearchResults" = "Қидирувингизга мос суҳбатлар топилмади";
+"shareExtension.tryDifferentFilter" = "Бошқа фильтрни синаб кўринг";
+"shareExtension.sendToConversation" = "%d та суҳбатга юбориш";
+"shareExtension.sendToConversationsPlural" = "%d та суҳбатга юбориш";
+"shareExtension.selectAccountTitle" = "Ҳисобни танланг";
+"shareExtension.searchConversations" = "Суҳбатларни қидириш";
+"shareExtension.accessibilitySelectConversation" = "Бу суҳбатни танлаш учун икки марта босинг";
+"shareExtension.accessibilitySelectedAccount" = "Танланган ҳисоб: %@. Ҳисобни алмаштириш учун икки марта босинг.";
+"shareExtension.accessibilitySendButton" = "Танланган суҳбатларга юбориш учун икки марта босинг";
+"shareExtension.accessibilitySelectAccount" = "Бу ҳисобни танлаш учун икки марта босинг";
+
+// Peer Services
+"peerServices.title" = "Улашилган хизматлар";
+"peerServices.refresh" = "Хизматларни янгилаш";
+"peerServices.empty" = "Улашилган хизматлар йўқ";
+"peerServices.errorOffline" = "Контакт офлайн";
+"peerServices.errorUnreachable" = "Контакт билан алоқа йўқ";
+"peerServices.errorTimeout" = "Сўровни кутиш вақти тугади";
+"peerServices.errorUnknown" = "Хизматларни олиб бўлмади";
+"peerServices.done" = "Тайёр";
+"peerServices.notSupported" = "Қўллаб-қувватланмайди";
+"peerServices.open" = "Очиш";
+
+// Collaborative documents
+"collab.documents" = "Ҳужжатлар";
+"collab.menu" = "Ҳужжат амаллари";
+"collab.newDocument" = "Янги ҳужжат";
+"collab.untitled" = "Номсиз ҳужжат";
+"collab.documentNameHint" = "Ҳужжат номи";
+"collab.create" = "Яратиш";
+"collab.rename" = "Номини ўзгартириш";
+"collab.openError" = "Бу ҳужжатни очиб бўлмади.";
+"collab.noDocuments" = "Бу суҳбатда ҳали ҳеч қандай ҳужжат ёзилмаган.";
+"collab.createdBy" = "Яратувчи: %@";
+"collab.editingAlone" = "Фақат сиз таҳрирламоқдасиз";
+"collab.editingOthers" = "Яна %d киши таҳрирламоқда";
+"collab.editingOneOther" = "Яна 1 киши таҳрирламоқда";
+"collab.history" = "Версиялар тарихи";
+"collab.noHistory" = "Бу ҳужжатнинг ҳали сақланган версияси йўқ.";
+"collab.versionLeave" = "Жорий версияга қайтиш";
+"collab.versionShown" = "Версия: %@";
+"collab.versionRestore" = "Тиклаш";
+"collab.versionRestored" = "Ҳужжат ушбу версияга тикланди.";
+"collab.versionUnchanged" = "Бу версия ҳужжатнинг ҳозирги ҳолати билан бир хил.";
+"collab.versionRestoreError" = "Бу версияни тиклаб бўлмади.";
+"collab.versionBy" = "%1$@ — %2$@";
+"collab.versionDeltas" = "%1$@ — %2$@, %3$d та ўзгариш";
+"collab.linkTitle" = "Ҳавола";
+"collab.linkHint" = "Манзил";
+"collab.linkAdd" = "Қўшиш";
+"collab.linkRemove" = "Ўчириш";
+"collab.exportPdf" = "PDF форматига экспорт қилиш";
+"collab.export" = "Маҳаллий нусхани экспорт қилиш";
+"collab.exportHtml" = "HTML форматига экспорт қилиш";
+"collab.exportMarkdown" = "Markdown форматига экспорт қилиш";
+"collab.exportText" = "Оддий матн сифатида экспорт қилиш";
+"collab.exportMissingImages" = "Бу ҳужжатдаги %d та расм ҳали келмаган ва экспорт қилинган файлга киритилмайди.";
+"collab.exportAnyway" = "Барибир экспорт қилиш";
+"collab.exportError" = "Бу ҳужжатни экспорт қилиб бўлмади.";
+"collab.imageError" = "Бу расмни қўшиб бўлмади.";
+"collab.imageTooLarge" = "Бу расм ҳужжатга қўшиш учун жуда катта.";
+"collab.sendError" = "Ўзгаришларингизни юбориб бўлмади.";
+"collab.editableDocument" = "Таҳрирланадиган ҳужжат";
+"collab.createError" = "Бу ҳужжатни яратиб бўлмади.";
+"collab.bold" = "Қалин";
+"collab.italic" = "Курсив";
+"collab.underline" = "Тагига чизилган";
+"collab.strikethrough" = "Устига чизилган";
+"collab.textFormat" = "Матн формати";
+"collab.heading" = "Сарлавҳа %d";
+"collab.bulletList" = "Белгили рўйхат";
+"collab.orderedList" = "Рақамли рўйхат";
+"collab.alignLeft" = "Чапга текислаш";
+"collab.alignCenter" = "Марказга текислаш";
+"collab.alignRight" = "Ўнгга текислаш";
+"collab.alignJustify" = "Икки томонга текислаш";
+"collab.insertImage" = "Расм қўйиш";
+"collab.clearFormat" = "Форматлашни тозалаш";
+"collab.undo" = "Ортга қайтариш";
+"collab.redo" = "Қайтадан бажариш";
+"collab.paragraphStyle" = "Услуб";
+"collab.normalText" = "Оддий матн";
+"collab.font" = "Шрифт";
+"collab.defaultFont" = "Стандарт шрифт";
+"collab.unavailableFont" = "Мавжуд бўлмаган шрифт";
+"collab.fontSize" = "Ўлчам";
+"collab.defaultSize" = "Стандарт ўлчам";
+"collab.alignment" = "Хатбошини текислаш";
+"collab.remove" = "Ўчириш";
+"collab.open" = "Очиш";
+"collab.downloadAndOpen" = "Юклаб олиш ва очиш";
+// Full labels shown inside the document-list row menu.
+"collab.removeLocallyMenu" = "Ушбу қурилмадан ўчириш";
+"collab.removeEverywhereMenu" = "Ҳамма учун ўчириш";
+// Short labels shown inside document-list swipe actions.
+"collab.removeLocallyAction" = "Маҳаллий нусхани ўчириш";
+"collab.removeEverywhereAction" = "Ўчириш";
+"collab.removeTitle" = "Ҳужжатни ўчириш";
+"collab.removeMessage" = "«%@» ушбу суҳбатнинг барча аъзолари учун ўчирилади. Буни ортга қайтариб бўлмайди.";
+"collab.removeError" = "Бу ҳужжатни ўчириб бўлмади.";
+"collab.removeLocallyTitle" = "Ушбу қурилмадан ўчириш";
+"collab.removeLocallyMessage" = "«%@» фақат ушбу қурилмадан ўчирилади. Бошқа аъзоларда у сақланиб қолади, қайта очилганда эса яна юклаб олинади.";
+"collab.removeLocallyError" = "Бу ҳужжатни ушбу қурилмадан ўчириб бўлмади.";
+"collab.notDownloaded" = "Юклаб олинмаган";
+"collab.createdByNotDownloaded" = "Яратувчи: %@, юклаб олинмаган";
+"collab.documentRemoved" = "Ҳужжат ўчирилди";
+"collab.documentRemovedMessage" = "«%@» муаллифи томонидан ўчирилди.";
+"collab.documentRemovedLocally" = "Ҳужжат ушбу қурилмадан ўчирилди";
+"collab.documentRemovedLocallyMessage" = "«%@» энди ушбу қурилмада йўқ. Қайта очилганда у яна юклаб олинади.";

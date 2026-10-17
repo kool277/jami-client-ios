@@ -234,3 +234,146 @@ struct VideoSettingsView: View {
         }
     }
 }
+
+struct ChatBackgroundSettingsView: View {
+    @StateObject var model: GeneralSettings
+    @SwiftUI.State private var showingColorPicker = false
+    @Environment(\.colorScheme) private var colorScheme
+
+    private enum Layout {
+        static let swatchSize: CGFloat = 44
+        static let selectionWidth: CGFloat = 3
+        static let selectionGap: CGFloat = 2
+        static let crossOutWidth: CGFloat = 3
+        static let spacing: CGFloat = 12
+        static var swatchFrameSize: CGFloat { swatchSize + 2 * (selectionGap + selectionWidth) }
+    }
+
+    init(injectionBag: InjectionBag) {
+        _model = StateObject(wrappedValue: GeneralSettings(injectionBag: injectionBag))
+    }
+
+    private var customColor: Int? {
+        if case .custom(let color) = model.chatBackground {
+            return color
+        }
+        return nil
+    }
+
+    var body: some View {
+        List {
+            Section {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.swatchFrameSize), spacing: Layout.spacing)],
+                          spacing: Layout.spacing) {
+                    swatch(name: L10n.GeneralSettings.chatBackgroundDefault,
+                           isSelected: model.chatBackground == .default,
+                           action: { model.setChatBackground(.default) },
+                           content: { defaultSwatch })
+                    ForEach(ChatBackgroundPreset.allCases, id: \.self) { preset in
+                        swatch(name: preset.name,
+                               isSelected: model.chatBackground == .preset(preset),
+                               action: { model.setChatBackground(.preset(preset)) },
+                               content: { ChatBackgroundView(fill: preset.fill(for: colorScheme)) })
+                    }
+                    swatch(name: L10n.GeneralSettings.chatBackgroundCustom,
+                           isSelected: customColor != nil,
+                           action: { showingColorPicker = true },
+                           content: { customSwatch })
+                }
+                .padding(.vertical, Layout.spacing / 2)
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(L10n.GeneralSettings.chatBackground)
+        .sheet(isPresented: $showingColorPicker) {
+            SystemColorPicker(title: L10n.GeneralSettings.chatBackgroundCustom,
+                              color: customColor.map { UIColor(hex: $0, alpha: 1) } ?? .systemGray,
+                              onChange: { color in model.setChatBackground(ChatBackground(customColor: color)) },
+                              onDone: { showingColorPicker = false })
+        }
+    }
+
+    private func swatch<Content: View>(name: String,
+                                       isSelected: Bool,
+                                       action: @escaping () -> Void,
+                                       @ViewBuilder content: () -> Content) -> some View {
+        Button(action: action) {
+            content()
+                .frame(width: Layout.swatchSize, height: Layout.swatchSize)
+                .clipShape(Circle())
+                .overlay(Circle().strokeBorder(Color(UIColor.separator), lineWidth: 1))
+                .padding(Layout.selectionGap + Layout.selectionWidth)
+                .overlay(
+                    Circle()
+                        .strokeBorder(Color.jami, lineWidth: Layout.selectionWidth)
+                        .opacity(isSelected ? 1 : 0)
+                )
+                .contentShape(Circle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(name)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
+    /// The theme's background crossed out, the usual mark for "none".
+    private var defaultSwatch: some View {
+        ZStack {
+            Color(UIColor.systemBackground)
+            Rectangle()
+                .fill(Color(UIColor.systemGray3))
+                .frame(width: Layout.crossOutWidth)
+                .rotationEffect(.degrees(45))
+        }
+    }
+
+    /// A rainbow until a color is picked, then that color.
+    @ViewBuilder private var customSwatch: some View {
+        if let color = customColor {
+            ChatBackgroundView(fill: .color(color))
+        } else {
+            AngularGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple, .red]),
+                            center: .center)
+        }
+    }
+}
+
+/// The system color picker, to show in a sheet.
+struct SystemColorPicker: UIViewControllerRepresentable {
+    let title: String
+    let color: UIColor
+    let onChange: (UIColor) -> Void
+    let onDone: () -> Void
+
+    func makeUIViewController(context: Context) -> UIColorPickerViewController {
+        let picker = UIColorPickerViewController()
+        picker.title = title
+        picker.supportsAlpha = false
+        picker.selectedColor = color
+        picker.delegate = context.coordinator
+        return picker
+    }
+
+    func updateUIViewController(_ uiViewController: UIColorPickerViewController, context: Context) {}
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, UIColorPickerViewControllerDelegate {
+        let parent: SystemColorPicker
+
+        init(_ parent: SystemColorPicker) {
+            self.parent = parent
+        }
+
+        func colorPickerViewController(_ viewController: UIColorPickerViewController,
+                                       didSelect color: UIColor,
+                                       continuously: Bool) {
+            parent.onChange(color)
+        }
+
+        func colorPickerViewControllerDidFinish(_ viewController: UIColorPickerViewController) {
+            parent.onDone()
+        }
+    }
+}

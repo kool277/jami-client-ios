@@ -392,6 +392,66 @@ final class SwarmInfoTests: XCTestCase {
         XCTAssertFalse(swarmInfo.finalTitle.value.isEmpty)
     }
 
+    // MARK: - Presence
+
+    func testOneToOneProfileFollowsTheContactPresence() {
+        addContact(jamiId: jamiId1)
+        notifyPresence(.connected, jamiId: jamiId1)
+        let viewModel = makeSwarmInfoViewModel(conversation: makeOneToOneConversation(with: jamiId1),
+                                               title: title1)
+        waitForMainScheduler()
+        XCTAssertEqual(viewModel.presence, .connected)
+
+        notifyPresence(.offline, jamiId: jamiId1)
+        waitForMainScheduler()
+        XCTAssertEqual(viewModel.presence, .offline)
+    }
+
+    func testGroupProfileShowsNoPresence() {
+        addContact(jamiId: jamiId1)
+        notifyPresence(.connected, jamiId: jamiId1)
+        var info = ConversationInfo(type: .invitesOnly)
+        info.addParticipant(jamiId: jamiId1)
+        let conversation = ConversationModel(id: conversationId1, accountId: accountId1, info: info)
+        let viewModel = makeSwarmInfoViewModel(conversation: conversation, title: title1)
+        waitForMainScheduler()
+        XCTAssertEqual(viewModel.presence, .offline)
+    }
+
+    func testBlockedContactProfileShowsNoPresence() {
+        addContact(jamiId: jamiId1, banned: true)
+        notifyPresence(.connected, jamiId: jamiId1)
+        let viewModel = makeSwarmInfoViewModel(conversation: makeOneToOneConversation(with: jamiId1),
+                                               title: title1)
+        waitForMainScheduler()
+        XCTAssertEqual(viewModel.presence, .offline)
+    }
+
+    private func makeOneToOneConversation(with jamiId: String) -> ConversationModel {
+        var info = ConversationInfo(type: .oneToOne)
+        info.addParticipant(jamiId: jamiId)
+        return ConversationModel(id: conversationId1, accountId: accountId1, info: info)
+    }
+
+    private func addContact(jamiId: String, banned: Bool = false) {
+        let contact = ContactModel(withUri: JamiURI(schema: .ring, infoHash: jamiId))
+        contact.banned = banned
+        injectionBag.contactsService.contacts.accept([contact])
+    }
+
+    /// Reports a presence as the daemon does, and waits until the presence
+    /// service has taken it in.
+    private func notifyPresence(_ status: PresenceStatus, jamiId: String) {
+        let presenceService = injectionBag.presenceService
+        presenceService.newBuddyNotification(withAccountId: accountId1,
+                                             withJamiId: jamiId,
+                                             withStatus: status.rawValue,
+                                             withLineStatus: "")
+        // The service handles notifications in order on its queue, which
+        // reading a subscription waits for.
+        _ = presenceService.getSubscriptionsForContact(contactId: jamiId)
+    }
+
     private func makeGroupConversation() -> ConversationModel {
         return ConversationModel(id: conversationId1, accountId: accountId1,
                                  info: ConversationInfo(type: .invitesOnly))

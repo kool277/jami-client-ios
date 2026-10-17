@@ -31,6 +31,8 @@ import CoreGraphics
 enum ConversationNavBarLayout {
     static let avatarSize: CGFloat = 30
     static let avatarSpacing: CGFloat = 8
+    static let presenceDotSize: CGFloat = 10
+    static let presenceRingWidth: CGFloat = 1.5
 
     private static let trailingSpacing: CGFloat = 8
     private static let backButtonSpacing: CGFloat = 20
