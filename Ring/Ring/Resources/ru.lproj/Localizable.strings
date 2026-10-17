@@ -591,6 +591,9 @@
 "generalSettings.locationSharingDuration" = "Продолжительность трансляции местоположения";
 "generalSettings.donationCampaign" = "Кампания по пожертвованиям";
 "generalSettings.enableDonationCampaign" = "Включить кампанию по пожертвованиям";
+"generalSettings.chatBackground" = "Фон чата";
+"generalSettings.chatBackgroundDefault" = "По умолчанию";
+"generalSettings.chatBackgroundCustom" = "Свой цвет";
 
 // Log View
 "logView.title" = "Диагностика";
@@ -730,6 +733,18 @@
 "swarmColors.brightOrange" = "Ярко-оранжевый";
 "swarmColors.brown" = "Коричневый";
 "swarmColors.steelBlue" = "Стальной синий";
+
+// Chat Background
+"chatBackground.sky" = "Небо";
+"chatBackground.mint" = "Мята";
+"chatBackground.sand" = "Песок";
+"chatBackground.rose" = "Роза";
+"chatBackground.lavender" = "Лаванда";
+"chatBackground.slate" = "Серый";
+"chatBackground.sunrise" = "Рассвет";
+"chatBackground.ocean" = "Океан";
+"chatBackground.meadow" = "Луг";
+"chatBackground.dusk" = "Сумерки";
 
 // Share extension
 "shareExtension.noAccount.title" = "Аккаунт не найден";

@@ -591,6 +591,9 @@
 "generalSettings.locationSharingDuration" = "Position share duration";
 "generalSettings.donationCampaign" = "Donation campaign";
 "generalSettings.enableDonationCampaign" = "Enable donation campaign";
+"generalSettings.chatBackground" = "Chat background";
+"generalSettings.chatBackgroundDefault" = "Default";
+"generalSettings.chatBackgroundCustom" = "Custom color";
 
 // Log View
 "logView.title" = "Diagnostics";
@@ -730,6 +733,18 @@
 "swarmColors.brightOrange" = "Bright orange";
 "swarmColors.brown" = "Brown";
 "swarmColors.steelBlue" = "Steel blue";
+
+// Chat Background
+"chatBackground.sky" = "Sky";
+"chatBackground.mint" = "Mint";
+"chatBackground.sand" = "Sand";
+"chatBackground.rose" = "Rose";
+"chatBackground.lavender" = "Lavender";
+"chatBackground.slate" = "Slate";
+"chatBackground.sunrise" = "Sunrise";
+"chatBackground.ocean" = "Ocean";
+"chatBackground.meadow" = "Meadow";
+"chatBackground.dusk" = "Dusk";
 
 // Share extension
 "shareExtension.noAccount.title" = "Account not found";

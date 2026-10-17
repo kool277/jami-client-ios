@@ -591,6 +591,9 @@
 "generalSettings.locationSharingDuration" = "Жойлашувни улашиш давомийлиги";
 "generalSettings.donationCampaign" = "Хайрия кампанияси";
 "generalSettings.enableDonationCampaign" = "Хайрия кампаниясини ёқиш";
+"generalSettings.chatBackground" = "Суҳбат фони";
+"generalSettings.chatBackgroundDefault" = "Стандарт";
+"generalSettings.chatBackgroundCustom" = "Ихтиёрий ранг";
 
 // Log View
 "logView.title" = "Диагностика";
@@ -730,6 +733,18 @@
 "swarmColors.brightOrange" = "Ёрқин тўқ сариқ";
 "swarmColors.brown" = "Жигарранг";
 "swarmColors.steelBlue" = "Кулранг кўк";
+
+// Chat Background
+"chatBackground.sky" = "Осмон";
+"chatBackground.mint" = "Ялпиз";
+"chatBackground.sand" = "Қум";
+"chatBackground.rose" = "Атиргул";
+"chatBackground.lavender" = "Лаванда";
+"chatBackground.slate" = "Кулранг";
+"chatBackground.sunrise" = "Тонг";
+"chatBackground.ocean" = "Океан";
+"chatBackground.meadow" = "Ўтлоқ";
+"chatBackground.dusk" = "Шом";
 
 // Share extension
 "shareExtension.noAccount.title" = "Ҳисоб топилмади";

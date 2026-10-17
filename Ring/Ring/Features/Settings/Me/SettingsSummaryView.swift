@@ -51,6 +51,9 @@ struct SettingsSummaryView: View {
             }
 
             Section(header: Text(L10n.AccountPage.appSettings), footer: Text(L10n.AccountPage.appSettingsExplanation)) {
+                NavigationLink(destination: ChatBackgroundSettingsView(injectionBag: model.injectionBag)) {
+                    SettingsRow(iconName: "paintpalette", title: L10n.GeneralSettings.chatBackground)
+                }
                 if model.account.type != .sip {
                     NavigationLink(destination: FileTransferSettingsView(injectionBag: model.injectionBag)) {
                         SettingsRow(iconName: "folder", title: L10n.GeneralSettings.fileTransfer)
