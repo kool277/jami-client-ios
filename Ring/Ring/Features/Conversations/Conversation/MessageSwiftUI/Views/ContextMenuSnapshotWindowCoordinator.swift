@@ -107,7 +107,10 @@ struct ContextMenuSnapshotWindowCoordinator: UIViewRepresentable {
     }
 }
 
-func captureKeyWindowSnapshot(erasingRect: CGRect? = nil) -> UIImage? {
+/// Captures the key window. The erased rect (the message lifted into the
+/// context menu) is filled with what is behind the messages: the chat
+/// background, or the theme's background when none is chosen.
+func captureKeyWindowSnapshot(erasingRect: CGRect? = nil, chatBackground: ChatBackgroundFill? = nil) -> UIImage? {
     let scene = UIApplication.shared.connectedScenes
         .compactMap { $0 as? UIWindowScene }
         .first { $0.activationState == .foregroundActive }
@@ -117,9 +120,23 @@ func captureKeyWindowSnapshot(erasingRect: CGRect? = nil) -> UIImage? {
     let renderer = UIGraphicsImageRenderer(bounds: window.bounds, format: format)
     return renderer.image { ctx in
         window.drawHierarchy(in: window.bounds, afterScreenUpdates: false)
-        if let rect = erasingRect {
+        guard let rect = erasingRect else { return }
+        switch chatBackground {
+        case nil:
             UIColor.systemBackground.setFill()
             ctx.fill(rect)
+        case .color(let color):
+            UIColor(hex: color, alpha: 1).setFill()
+            ctx.fill(rect)
+        case .gradient(let start, let end):
+            // The chat background's gradient runs across the screen.
+            let colors = [UIColor(hex: start, alpha: 1).cgColor, UIColor(hex: end, alpha: 1).cgColor] as CFArray
+            guard let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors, locations: nil) else { return }
+            ctx.cgContext.clip(to: rect)
+            ctx.cgContext.drawLinearGradient(gradient,
+                                             start: CGPoint(x: window.bounds.minX, y: window.bounds.minY),
+                                             end: CGPoint(x: window.bounds.maxX, y: window.bounds.maxY),
+                                             options: [])
         }
     }
 }

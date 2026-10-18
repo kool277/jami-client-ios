@@ -591,6 +591,9 @@
 "generalSettings.locationSharingDuration" = "Joylashuvni ulashish davomiyligi";
 "generalSettings.donationCampaign" = "Xayriya kampaniyasi";
 "generalSettings.enableDonationCampaign" = "Xayriya kampaniyasini yoqish";
+"generalSettings.chatBackground" = "Suhbat foni";
+"generalSettings.chatBackgroundDefault" = "Standart";
+"generalSettings.chatBackgroundCustom" = "Ixtiyoriy rang";
 
 // Log View
 "logView.title" = "Diagnostika";
@@ -730,6 +733,18 @@
 "swarmColors.brightOrange" = "Yorqin toʻq sariq";
 "swarmColors.brown" = "Jigarrang";
 "swarmColors.steelBlue" = "Kulrang koʻk";
+
+// Chat Background
+"chatBackground.sky" = "Osmon";
+"chatBackground.mint" = "Yalpiz";
+"chatBackground.sand" = "Qum";
+"chatBackground.rose" = "Atirgul";
+"chatBackground.lavender" = "Lavanda";
+"chatBackground.slate" = "Kulrang";
+"chatBackground.sunrise" = "Tong";
+"chatBackground.ocean" = "Okean";
+"chatBackground.meadow" = "Oʻtloq";
+"chatBackground.dusk" = "Shom";
 
 // Share extension
 "shareExtension.noAccount.title" = "Hisob topilmadi";
