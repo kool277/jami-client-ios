@@ -87,7 +87,7 @@ struct CollabNewDocumentButton: View {
                 .font(.title2)
                 .foregroundColor(.white)
                 .frame(width: Layout.size, height: Layout.size)
-                .background(Color.jami)
+                .background(Color.jamiButtonPrimary)
                 .clipShape(Circle())
                 .shadow(radius: Layout.shadowRadius)
         }

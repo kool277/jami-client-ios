@@ -247,7 +247,7 @@ extension UIImage {
     }
 
     func fillJamiBackgroundColor(inset: CGFloat) -> UIImage {
-        let color = UIColor.jami
+        let color = UIColor.jamiButtonPrimary
         return self.fillBackgroundColor(color: color, inset: inset)
     }
 

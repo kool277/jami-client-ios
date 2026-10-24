@@ -110,7 +110,7 @@ struct EditMessagePanel: View {
         }) {
             Text(L10n.Global.editing)
                 .font(model.styling.secondaryFont)
-                .foregroundColor(Color(UIColor.systemBlue))
+                .foregroundColor(Color.jami)
             Spacer()
                 .frame(width: 5)
             Text(messageToEdit.message.content)

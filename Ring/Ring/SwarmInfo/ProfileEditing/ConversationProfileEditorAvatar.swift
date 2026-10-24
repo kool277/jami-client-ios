@@ -76,7 +76,7 @@ struct ConversationProfileEditorAvatar: View {
             .font(.system(size: Layout.badgeIconSize, weight: .semibold))
             .foregroundStyle(.white)
             .frame(width: Layout.badgeSize, height: Layout.badgeSize)
-            .background(Circle().fill(Color.jami))
+            .background(Circle().fill(Color.jamiButtonPrimary))
             .overlay(
                 Circle().strokeBorder(Color(UIColor.systemGroupedBackground),
                                       lineWidth: Layout.badgeRingWidth)

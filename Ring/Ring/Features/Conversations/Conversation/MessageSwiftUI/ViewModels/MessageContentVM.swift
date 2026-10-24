@@ -310,7 +310,7 @@ class MessageContentVM: ObservableObject, PlayerDelegate, MessageAppearanceProto
     private func updateTextColor() {
         if self.isLink() {
             let backgroundIsLightColor: Bool = self.backgroundColor.isLight(threshold: 0.8) ?? true
-            self.styling.textColor = backgroundIsLightColor ? .blue : .white
+            self.styling.textColor = backgroundIsLightColor ? .jami : .white
         } else if !self.isIncoming && !self.type.isContact {
             self.styling.textColor = Color.white
         } else {

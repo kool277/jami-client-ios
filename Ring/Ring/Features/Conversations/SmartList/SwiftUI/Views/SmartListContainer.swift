@@ -215,7 +215,7 @@ struct SmartListView: View, StateEmittingView {
         ShareLink(item: model.accountInfoToShare) {
             Label(L10n.Smartlist.inviteFriends, systemImage: "envelope.open")
                 .padding()
-                .background(Color.blue)
+                .background(Color.jamiButtonPrimary)
                 .foregroundColor(.white)
                 .cornerRadius(8)
         }
