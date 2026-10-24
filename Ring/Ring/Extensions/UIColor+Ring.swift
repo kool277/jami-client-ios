@@ -69,7 +69,7 @@ extension UIColor {
 
     // MARK: - Brand
     static let jami = UIColor(named: "jami")!
-    static let jamiSecondary = UIColor(hex: 0x1F4971, alpha: 1.0)
+    static let jamiSecondary = UIColor(named: "jamiSecondary")!
 
     // MARK: - Buttons
     static let jamiButtonPrimary = UIColor(named: "jamiButtonPrimary")!
@@ -86,9 +86,9 @@ extension UIColor {
 
     // MARK: - Feature accents
     static let jamiDonation = UIColor(red: 255, green: 0, blue: 69, alpha: 1.0)
-    static let jamiRaiseHand = UIColor(red: 0, green: 184, blue: 255, alpha: 1.0)
-    static let jamiCallPulse = UIColor(hex: 0x039FDF, alpha: 1.0)
-    static let jamiDefaultAvatar = UIColor(hex: 0x039FDF, alpha: 1.0)
+    static let jamiRaiseHand = UIColor.jami
+    static let jamiCallPulse = UIColor.jami
+    static let jamiDefaultAvatar = UIColor.jamiButtonPrimary
     static let jamiOnVideoScrim = UIColor(named: "jamiOnVideoScrim")!
     static let jamiOnVideoGlass = UIColor(named: "jamiOnVideoGlass")!
     static let jamiCallBackdrop = UIColor(named: "jamiCallBackdrop")!
@@ -100,17 +100,18 @@ extension UIColor {
     static let jamiWarning = UIColor.orange
 
     // MARK: - Messages
-    static let jamiMessageCellSent = UIColor(hex: 0x367BC1, alpha: 1.0)
+    static let jamiMessageCellSent = UIColor.defaultSwarmColor
     static var jamiMessageCellReceived: UIColor {
         return UIColor(named: "backgroundMsgReceived") ?? UIColor(red: 231, green: 235, blue: 235, alpha: 1.0)
     }
 
-    /// Resolves `.systemBlue` / `.white` from bubble background luminance per trait collection.
+    /// Resolves the accent / `.white` from bubble background luminance per trait collection.
+    /// On a light bubble the accent is taken in its light appearance, so it stays dark enough to read.
     static func adaptiveMessageLinkColor(on background: UIColor) -> UIColor {
         UIColor { traitCollection in
             let resolved = background.resolvedColor(with: traitCollection)
             let isLight = resolved.isLight(threshold: 0.8) ?? true
-            return isLight ? .systemBlue : .white
+            return isLight ? UIColor.jami.resolvedColor(with: UITraitCollection(userInterfaceStyle: .light)) : .white
         }
     }
 
@@ -137,8 +138,8 @@ extension UIColor {
     }
 
     // MARK: - Swarm
-    static let defaultSwarmColorHex = "#00BCD4"
-    static let defaultSwarmColor = UIColor(hexString: "#00BCD4")!
+    static let defaultSwarmColorHex = "#666600"
+    static let defaultSwarmColor = UIColor(hexString: "#666600")!
 
     // MARK: - Presence
     static let availablePresence = UIColor(hexString: "#E59028")!

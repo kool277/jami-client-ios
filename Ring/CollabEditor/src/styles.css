@@ -12,8 +12,8 @@
     --jami-text: #1b1b1b;
     --jami-background: #ffffff;
     --jami-placeholder: #8a8a8a;
-    --jami-link: #0056b3;
-    --jami-selection: rgba(0, 86, 179, 0.24);
+    --jami-link: #666600;
+    --jami-selection: rgba(102, 102, 0, 0.24);
     --jami-rule: rgba(0, 0, 0, 0.12);
     --jami-text-size: 16px;
 }
@@ -128,7 +128,7 @@ body {
     position: absolute;
     display: none;
     pointer-events: none;
-    border: 2px solid var(--jami-accent, #0056b3);
+    border: 2px solid var(--jami-accent, #666600);
     box-sizing: border-box;
     z-index: 3;
 }
@@ -165,7 +165,7 @@ body {
     height: 22px;
     margin: -11px 0 0 -11px;
     border-radius: 50%;
-    background: var(--jami-accent, #0056b3);
+    background: var(--jami-accent, #666600);
     border: 2px solid #fff;
     box-sizing: border-box;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);

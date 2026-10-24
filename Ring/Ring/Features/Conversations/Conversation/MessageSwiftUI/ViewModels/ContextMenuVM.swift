@@ -123,7 +123,7 @@ class ContextMenuVM: ObservableObject {
     private(set) var incomingMessageMarginSize: CGFloat = 58
     private(set) var outgoingMessageTrailingMargin: CGFloat = 10
     private(set) var isOurMsg: Bool = false
-    private(set) var preferencesColor: UIColor = .systemBlue
+    private(set) var preferencesColor: UIColor = .defaultSwarmColor
 
     var shadowColor: UIColor {
         return UITraitCollection.current.userInterfaceStyle == .light

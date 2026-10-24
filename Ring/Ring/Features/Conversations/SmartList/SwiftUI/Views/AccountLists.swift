@@ -140,7 +140,7 @@ struct AccountLists: View {
             createAccountCallback()
         }, label: {
             Text(L10n.Smartlist.addAccountButton)
-                .foregroundColor(Color.jamiButtonPrimary)
+                .foregroundColor(Color.jami)
                 .lineLimit(1)
                 .padding()
                 .frame(maxWidth: .infinity)

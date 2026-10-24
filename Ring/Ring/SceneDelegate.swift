@@ -30,6 +30,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         let window = UIWindow(windowScene: windowScene)
+        // The app's accent for every control that sets no color of its own:
+        // alert buttons, text cursors and selection handles, links.
+        window.tintColor = UIColor.jami
         window.rootViewController = appDelegate.rootViewController
         window.makeKeyAndVisible()
         window.backgroundColor = UIColor.systemBackground

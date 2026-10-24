@@ -460,8 +460,8 @@ struct ShareButtonStyle: ButtonStyle {
                 ZStack {
                     LinearGradient(
                         gradient: Gradient(colors: [
-                            Color.accentColor,
-                            Color.accentColor.opacity(0.9)
+                            Color("jamiButtonPrimary"),
+                            Color("jamiButtonPrimary").opacity(0.9)
                         ]),
                         startPoint: .top,
                         endPoint: .bottom
@@ -474,7 +474,7 @@ struct ShareButtonStyle: ButtonStyle {
             )
             .foregroundColor(.white)
             .shadow(
-                color: Color.accentColor.opacity(0.3),
+                color: Color("jamiButtonPrimary").opacity(0.3),
                 radius: configuration.isPressed ? 2 : 2,
                 x: 0,
                 y: configuration.isPressed ? 1 : 1
