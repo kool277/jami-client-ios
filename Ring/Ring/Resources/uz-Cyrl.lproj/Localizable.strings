@@ -210,7 +210,7 @@
 "invitations.noInvitations" = "Таклифлар йўқ";
 "invitations.accepted" = "Қабул қилинди";
 "invitations.declined" = "Рад этилди";
-"invitations.blocked" = "Блокланди";
+"invitations.blocked" = "Блокланган";
 "invitations.list" = "Келган таклифлар";
 
 // Walkthrough
@@ -238,7 +238,7 @@
 "createAccount.lookingForUsernameAvailability" = "Фойдаланувчи номи бандлиги текширилмоқда…";
 "createAccount.invalidUsername" = "Фойдаланувчи номи нотўғри. Тўғри фойдаланувчи номини киритинг.";
 "createAccount.usernameAlreadyTaken" = "Бу фойдаланувчи номи банд";
-"createAccount.usernameValid" = "Фойдаланувчи номи бўш.";
+"createAccount.usernameValid" = "Бу фойдаланувчи номи бўш.";
 "createAccount.UsernameNotRegisteredTitle" = "Тармоқ хатоси";
 "createAccount.UsernameNotRegisteredMessage" = "Ҳисоб яратилди, лекин фойдаланувчи номи рўйхатдан ўтказилмади";
 "createAccount.timeoutTitle" = "Ҳисоб яратилди";
@@ -383,7 +383,7 @@
 "accountPage.deviceRevoked" = "Қурилмани ўчириш якунланди";
 "accountPage.deviceRevocationProgress" = "Ўчирилмоқда…";
 "accountPage.deviceRevocationSuccess" = "Қурилма ўчирилди";
-"accountPage.deviceRevocationTryAgain" = "Қайта уриниш";
+"accountPage.deviceRevocationTryAgain" = "Қайтадан уриниш";
 "accountPage.deviceRevocationWrongPassword" = "Пароль нотўғри";
 "accountPage.deviceRevocationUnknownDevice" = "Номаълум қурилма";
 "accountPage.deviceRevocationError" = "Қурилмани ўчиришда хато";
@@ -432,7 +432,7 @@
 "accountPage.security" = "Хавфсизлик";
 "accountPage.enableSRTP" = "SDES калит алмашинувини ёқиш";
 "accountPage.encryptNegotiation" = "Келишувни шифрлаш (TLS)";
-"accountPage.registerNameExplanation" = "Бошқалар сизни Jami тармоғида осонроқ топиши ва сиз билан боғланиши учун фойдаланувчи номини рўйхатдан ўтказинг.";
+"accountPage.registerNameExplanation" = "Бошқалар сизни Jami тармоғида осонроқ топиб, сиз билан боғлана олишлари учун фойдаланувчи номини рўйхатдан ўтказинг.";
 "accountPage.profileHeader" = "Профиль";
 "accountPage.profileNameNotSelected" = "Исм танланмаган";
 "accountPage.accountHeader" = "Ҳисоб";
@@ -442,16 +442,16 @@
 "accountPage.manageAccount" = "Ҳисобни бошқариш";
 "accountPage.encryptAccount" = "Пароль";
 "accountPage.passwordExplanation" = "Jami ҳисобингиз фақат ушбу қурилмада, ҳисоб калитларини ўз ичига олган архив сифатида сақланади. Бу архивга киришни пароль билан ҳимоялаш мумкин.";
-"accountPage.passwordsDoNotMatch" = "Пароллар мос келмади.";
+"accountPage.passwordsDoNotMatch" = "Пароллар мос келмайди.";
 "accountPage.passwordCreated" = "Пароль ўрнатилди";
 "accountPage.passwordUpdated" = "Пароль янгиланди";
 "accountPage.linkedDevices" = "Боғланган қурилмалар";
 "accountPage.unlink" = "Ажратиш";
-"accountPage.generatingPin" = "ПИН-код яратилмоқда…";
-"accountPage.passwordForPin" = "Ҳисоб пароль билан ҳимояланган. ПИН-код яратиш учун паролни киритинг.";
+"accountPage.generatingPin" = "PIN-код яратилмоқда…";
+"accountPage.passwordForPin" = "Ҳисоб пароль билан ҳимояланган. PIN-код яратиш учун паролни киритинг.";
 "accountPage.pinExplanationTitle" = "Бошқа қурилмада";
-"accountPage.pinExplanationMessage" = "Jami иловасини ўрнатинг ва ишга туширинг. «Бошқа қурилмадан импорт қилиш» бандини танланг ва QR-кодни сканерланг. Ёки ПИН-кодни қўлда киритинг.";
-"accountPage.pinError" = "ПИН-код яратишда хато юз берди.";
+"accountPage.pinExplanationMessage" = "Jami иловасини ўрнатинг ва ишга туширинг. «Бошқа қурилмадан импорт қилиш» бандини танланг ва QR-кодни сканерланг. Ёки PIN-кодни қўлда киритинг.";
+"accountPage.pinError" = "PIN-код яратишда хато юз берди.";
 "accountPage.notificationTitle" = "Билдиришномалар";
 "accountPage.notificationError" = "Jami учун билдиришномалар ўчирилган. Бу функциядан фойдаланиш учун уларни қурилма созламаларида ёқинг.";
 "accountPage.callsFromUnknownContacts" = "Нотаниш контактлардан қўнғироқларга рухсат бериш.";
@@ -524,7 +524,7 @@
 "linkDevice.errorTimeout" = "Амални кутиш вақти тугади. Қайтадан уриниб кўринг.";
 "linkDevice.errorCode" = "Код яратишда хато юз берди. Қайтадан уриниб кўринг.";
 "linkDevice.errorWrongData" = "Ҳисобни экспорт қилишда хато юз берди. Қайтадан уриниб кўринг.";
-"linkDevice.initialInfo" = "Янги қурилмада янги ҳисоб қўшишни бошланг.";
+"linkDevice.initialInfo" = "Янги қурилмада янги ҳисоб яратишни бошланг.";
 "linkDevice.infoAddAccount" = "«Ҳисоб қўшиш» → «Бошқа қурилмадан уланиш» бандини танланг.";
 "linkDevice.infoQRCode" = "Тайёр бўлгач, QR-кодни сканерланг.";
 "linkDevice.infoCode" = "Тайёр бўлгач, кодни киритинг ва «Уланиш» тугмасини босинг.";
@@ -623,7 +623,7 @@
 "aboutJami.media" = "Медиа";
 "aboutJami.communityManagement" = "Ҳамжамиятни бошқариш";
 "aboutJami.specialThanks" = "Алоҳида миннатдорчилик";
-"aboutJami.info" = "Бу Jami лойиҳасига кўп вақт сарфлаб, фойдали натижаларга эришган инсонлар рўйхати. Рўйхатга қўшилишни истаган бундай ҳисса қўшувчилар биз билан боғлансин.";
+"aboutJami.info" = "Бу рўйхатда Jami ривожига кўп вақт сарфлаган ва фойдали натижаларга эришган инсонлар келтирилган. Рўйхатга қўшилишни истаган ҳисса қўшувчилар биз билан боғланишлари мумкин.";
 "aboutJami.header" = "Кўп йиллик меҳнати билан ушбу дастурни ҳозирги ҳолатига келтирган барча ҳисса қўшувчиларимизга миннатдорчилик билдирамиз.";
 
 // Accessibility
@@ -632,7 +632,7 @@
 "accessibility.smartListConnectedAs" = "Жорий ҳисоб: %@";
 "accessibility.smartListAddAccount" = "Ҳисоб қўшиш";
 "accessibility.aboutJamiTitle" = "Jami ҳақида";
-"accessibility.welcomeToJamiTitle" = "Jami иловасига хуш келибсиз";
+"accessibility.welcomeToJamiTitle" = "Jami дастурига хуш келибсиз";
 "accessibility.createAccountVerifyUsernamePrompt" = "Бандлигини текшириш учун фойдаланувчи номини киритинг.";
 "accessibility.avatarExpandHint" = "Расмни катталаштириш учун икки марта босинг";
 "accessibility.avatarCollapseHint" = "Расмни кичрайтириш учун икки марта босинг";
