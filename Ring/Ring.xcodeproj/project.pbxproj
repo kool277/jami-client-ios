@@ -1752,6 +1752,7 @@
 		62AD0C281FE03FF600BEA1F6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E731641FC3C4B224100FA684 /* uz */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uz; path = uz.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6962AA3760855DD8D6116305 /* uz-Cyrl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uz-Cyrl"; path = "uz-Cyrl.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		FF15F3E636D522827DE6C3D3 /* uz-Latn-2026 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uz-Latn-2026"; path = "uz-Latn-2026.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		62AD0C2A1FE054DD00BEA1F6 /* zh-Hans-CN */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans-CN"; path = "zh-Hans-CN.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		62AD0C2B1FE0557D00BEA1F6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		62AF6861201A66CF003AA9E8 /* AudioAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioAdapter.mm; sourceTree = "<group>"; };
@@ -4083,6 +4084,7 @@
 				ru,
 				uz,
 				"uz-Cyrl",
+				"uz-Latn-2026",
 				"zh-Hans-CN",
 				"zh-Hans",
 				Base,
@@ -4722,6 +4724,7 @@
 				62AD0C281FE03FF600BEA1F6 /* ru */,
 				E731641FC3C4B224100FA684 /* uz */,
 				6962AA3760855DD8D6116305 /* uz-Cyrl */,
+				FF15F3E636D522827DE6C3D3 /* uz-Latn-2026 */,
 				62AD0C2A1FE054DD00BEA1F6 /* zh-Hans-CN */,
 				62AD0C2B1FE0557D00BEA1F6 /* zh-Hans */,
 			);

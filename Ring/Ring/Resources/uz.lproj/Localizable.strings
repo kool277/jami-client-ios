@@ -210,7 +210,7 @@
 "invitations.noInvitations" = "Takliflar yoʻq";
 "invitations.accepted" = "Qabul qilindi";
 "invitations.declined" = "Rad etildi";
-"invitations.blocked" = "Bloklandi";
+"invitations.blocked" = "Bloklangan";
 "invitations.list" = "Kelgan takliflar";
 
 // Walkthrough
@@ -238,7 +238,7 @@
 "createAccount.lookingForUsernameAvailability" = "Foydalanuvchi nomi bandligi tekshirilmoqda…";
 "createAccount.invalidUsername" = "Foydalanuvchi nomi notoʻgʻri. Toʻgʻri foydalanuvchi nomini kiriting.";
 "createAccount.usernameAlreadyTaken" = "Bu foydalanuvchi nomi band";
-"createAccount.usernameValid" = "Foydalanuvchi nomi boʻsh.";
+"createAccount.usernameValid" = "Bu foydalanuvchi nomi boʻsh.";
 "createAccount.UsernameNotRegisteredTitle" = "Tarmoq xatosi";
 "createAccount.UsernameNotRegisteredMessage" = "Hisob yaratildi, lekin foydalanuvchi nomi roʻyxatdan oʻtkazilmadi";
 "createAccount.timeoutTitle" = "Hisob yaratildi";
@@ -383,7 +383,7 @@
 "accountPage.deviceRevoked" = "Qurilmani oʻchirish yakunlandi";
 "accountPage.deviceRevocationProgress" = "Oʻchirilmoqda…";
 "accountPage.deviceRevocationSuccess" = "Qurilma oʻchirildi";
-"accountPage.deviceRevocationTryAgain" = "Qayta urinish";
+"accountPage.deviceRevocationTryAgain" = "Qaytadan urinish";
 "accountPage.deviceRevocationWrongPassword" = "Parol notoʻgʻri";
 "accountPage.deviceRevocationUnknownDevice" = "Nomaʼlum qurilma";
 "accountPage.deviceRevocationError" = "Qurilmani oʻchirishda xato";
@@ -432,7 +432,7 @@
 "accountPage.security" = "Xavfsizlik";
 "accountPage.enableSRTP" = "SDES kalit almashinuvini yoqish";
 "accountPage.encryptNegotiation" = "Kelishuvni shifrlash (TLS)";
-"accountPage.registerNameExplanation" = "Boshqalar sizni Jami tarmogʻida osonroq topishi va siz bilan bogʻlanishi uchun foydalanuvchi nomini roʻyxatdan oʻtkazing.";
+"accountPage.registerNameExplanation" = "Boshqalar sizni Jami tarmogʻida osonroq topib, siz bilan bogʻlana olishlari uchun foydalanuvchi nomini roʻyxatdan oʻtkazing.";
 "accountPage.profileHeader" = "Profil";
 "accountPage.profileNameNotSelected" = "Ism tanlanmagan";
 "accountPage.accountHeader" = "Hisob";
@@ -442,7 +442,7 @@
 "accountPage.manageAccount" = "Hisobni boshqarish";
 "accountPage.encryptAccount" = "Parol";
 "accountPage.passwordExplanation" = "Jami hisobingiz faqat ushbu qurilmada, hisob kalitlarini oʻz ichiga olgan arxiv sifatida saqlanadi. Bu arxivga kirishni parol bilan himoyalash mumkin.";
-"accountPage.passwordsDoNotMatch" = "Parollar mos kelmadi.";
+"accountPage.passwordsDoNotMatch" = "Parollar mos kelmaydi.";
 "accountPage.passwordCreated" = "Parol oʻrnatildi";
 "accountPage.passwordUpdated" = "Parol yangilandi";
 "accountPage.linkedDevices" = "Bogʻlangan qurilmalar";
@@ -524,7 +524,7 @@
 "linkDevice.errorTimeout" = "Amalni kutish vaqti tugadi. Qaytadan urinib koʻring.";
 "linkDevice.errorCode" = "Kod yaratishda xato yuz berdi. Qaytadan urinib koʻring.";
 "linkDevice.errorWrongData" = "Hisobni eksport qilishda xato yuz berdi. Qaytadan urinib koʻring.";
-"linkDevice.initialInfo" = "Yangi qurilmada yangi hisob qoʻshishni boshlang.";
+"linkDevice.initialInfo" = "Yangi qurilmada yangi hisob yaratishni boshlang.";
 "linkDevice.infoAddAccount" = "«Hisob qoʻshish» → «Boshqa qurilmadan ulanish» bandini tanlang.";
 "linkDevice.infoQRCode" = "Tayyor boʻlgach, QR-kodni skanerlang.";
 "linkDevice.infoCode" = "Tayyor boʻlgach, kodni kiriting va «Ulanish» tugmasini bosing.";
@@ -623,7 +623,7 @@
 "aboutJami.media" = "Media";
 "aboutJami.communityManagement" = "Hamjamiyatni boshqarish";
 "aboutJami.specialThanks" = "Alohida minnatdorchilik";
-"aboutJami.info" = "Bu Jami loyihasiga koʻp vaqt sarflab, foydali natijalarga erishgan insonlar roʻyxati. Roʻyxatga qoʻshilishni istagan bunday hissa qoʻshuvchilar biz bilan bogʻlansin.";
+"aboutJami.info" = "Bu roʻyxatda Jami rivojiga koʻp vaqt sarflagan va foydali natijalarga erishgan insonlar keltirilgan. Roʻyxatga qoʻshilishni istagan hissa qoʻshuvchilar biz bilan bogʻlanishlari mumkin.";
 "aboutJami.header" = "Koʻp yillik mehnati bilan ushbu dasturni hozirgi holatiga keltirgan barcha hissa qoʻshuvchilarimizga minnatdorchilik bildiramiz.";
 
 // Accessibility
@@ -632,7 +632,7 @@
 "accessibility.smartListConnectedAs" = "Joriy hisob: %@";
 "accessibility.smartListAddAccount" = "Hisob qoʻshish";
 "accessibility.aboutJamiTitle" = "Jami haqida";
-"accessibility.welcomeToJamiTitle" = "Jami ilovasiga xush kelibsiz";
+"accessibility.welcomeToJamiTitle" = "Jami dasturiga xush kelibsiz";
 "accessibility.createAccountVerifyUsernamePrompt" = "Bandligini tekshirish uchun foydalanuvchi nomini kiriting.";
 "accessibility.avatarExpandHint" = "Rasmni kattalashtirish uchun ikki marta bosing";
 "accessibility.avatarCollapseHint" = "Rasmni kichraytirish uchun ikki marta bosing";
